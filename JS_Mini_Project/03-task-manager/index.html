@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="task-manager section-center">
+      <form action="" class="form task-manager-form">
+        <div class="title">
+          <h2>task manager</h2>
+          <div class="title-underline"></div>
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="e.g. Complete Udemy Course"
+            id="name"
+            class="form-input"
+          />
+          <button type="submit" class="btn">submit</button>
+        </div>
+        <small class="form-alert">there was an error.</small>
+      </form>
+      <p class="">Loading.....</p>
+      <section class="tasks section-center">
+        <!-- single task start -->
+        <article class="single-task">
+          <div class="task-info">
+            <span><i class="fa-regular fa-circle-check fa-fw"></i></span>
+            <h5 class="task-name">Task Name 1</h5>
+          </div>
+          <div class="task-links">
+            <a href="./task.html" class="edit-link">
+              <i class="fa-solid fa-pen-to-square fa-fw"></i>
+            </a>
+            <button type="button" class="trash-btn" data-id="xyz">
+              <i class="fa-solid fa-trash fa-fw"></i>
+            </button>
+          </div>
+        </article>
+        <!-- single task end -->
+        <!-- single task start -->
+        <article class="single-task task-completed">
+          <div class="task-info">
+            <span><i class="fa-regular fa-circle-check fa-fw"></i></span>
+            <h5 class="task-name">Task Name 1</h5>
+          </div>
+          <div class="task-links">
+            <a href="./task.html" class="edit-link">
+              <i class="fa-solid fa-pen-to-square fa-fw"></i>
+            </a>
+            <button type="button" class="trash-btn" data-id="xyz">
+              <i class="fa-solid fa-trash fa-fw"></i>
+            </button>
+          </div>
+        </article>
+        <!-- single task end -->
+      </section>
+    </main>
+  </body>
+</html>

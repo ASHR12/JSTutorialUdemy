@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Down</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="section-center">
+      <section class="radio-section">
+        <h2 class="">Please select option to test</h2>
+        <input type="radio" id="default" name="test-option" value="default" />
+        <label for="default"
+          >Default (Set 10 days from current date and it ends at 23:30)</label
+        ><br />
+        <input type="radio" id="date" name="test-option" value="date" />
+        <label for="date">Choose End Date and Time</label><br />
+        <form action="" class="date-selection" id="form">
+          <label for="end-time"></label>
+          <input type="datetime-local" id="end" name="end-time" />
+          <button class="btn">Submit</button>
+        </form>
+      </section>
+      <section class="give-away">
+        <figure>
+          <img
+            src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1659053859/samples/ecommerce/leather-bag-gray.jpg"
+            class="img"
+            alt="laptop-bag"
+          />
+        </figure>
+        <article class="desc">
+          <h2>new leather bag giveaway</h2>
+          <h6>
+            Giveaway Ends On
+            <span class="date_time"></span>
+          </h6>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
+            quos? Incidunt nam sit, obcaecati at iure perspiciatis dolore
+            deserunt, hic debitis veritatis ab aut optio consequuntur aspernatur
+            eius consectetur! Suscipit?
+          </p>
+          <div class="deadline">
+            <div class="deadline-format">
+              <div>
+                <h4 class="days">00</h4>
+                <span>days</span>
+              </div>
+            </div>
+            <div class="deadline-format">
+              <div>
+                <h4 class="hours">00</h4>
+                <span>hours</span>
+              </div>
+            </div>
+            <div class="deadline-format">
+              <div>
+                <h4 class="mins">00</h4>
+                <span>mins</span>
+              </div>
+            </div>
+            <div class="deadline-format">
+              <div>
+                <h4 class="secs">00</h4>
+                <span>secs</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script src="./js/helper.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

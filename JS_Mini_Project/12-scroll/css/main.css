@@ -1,0 +1,448 @@
+/* 
+===============
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+/* 
+===============
+Variables
+===============
+*/
+:root {
+  /* dark shades of primary color*/
+  /* Darker shade */
+  --clr-primary-1: #4c1d95;
+  --clr-primary-2: #5e34a0;
+  --clr-primary-3: #704aaa;
+  /* lighter shade */
+  --clr-primary-4: #8261b5;
+  --clr-primary-5: #9477bf;
+  --clr-primary-6: #a68eca;
+  --clr-primary-7: #b7a5d5;
+  --clr-primary-8: #c9bbdf;
+  --clr-primary-9: #dbd2ea;
+  --clr-primary-10: #ede8f4;
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --ff-primary: "Lato", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/* 
+===============
+Global CSS
+===============
+*/
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-primary);
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+img:not(.nav-logo) {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-3);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*  global classes */
+.btn {
+  text-transform: uppercase;
+  background: var(--clr-primary-1);
+  color: var(--clr-white);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  display: inline-block;
+  /* font-weight: 700; */
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  font-size: 0.875rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-7);
+}
+.section {
+  /* padding: 5rem 0; */
+  min-height: calc(100vh - 60px);
+}
+.section:nth-child(odd) {
+  background: var(--clr-white);
+}
+.section:nth-child(even) {
+  background: var(--clr-primary-9);
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-title h2 {
+  text-transform: uppercase;
+}
+.section-title span {
+  color: var(--clr-primary-1);
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+/* global end */
+/*
+=============== 
+Navbar
+===============
+*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+  z-index: 2;
+}
+.nav-icons {
+  display: none;
+}
+.nav-center {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.nav-header {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+img.nav-logo {
+  width: 175px;
+}
+.nav-toggle {
+  background: transparent;
+  border: transparent;
+  font-size: 1.5rem;
+  color: var(--clr-primary-1);
+  cursor: pointer;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+.nav-toggle:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.nav-link {
+  display: block;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.nav-link:hover {
+  padding-left: 3rem;
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-7);
+}
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+/* .show-links {
+  height: 280px;
+} */
+
+@media screen and (min-width: 992px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-center {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  .nav-links {
+    display: -webkit-box;
+    display: flex;
+    /* important is added bcoz inline css will have more priority so to overide we use important */
+    height: auto !important;
+    gap: 1rem;
+  }
+  .nav-header,
+  .nav-link {
+    padding: 0 0;
+  }
+  .nav-link:hover {
+    padding: 0;
+    color: var(--clr-primary-1);
+    background: transparent;
+  }
+  .nav-icons {
+    display: -webkit-box;
+    display: flex;
+    gap: 1rem;
+  }
+  .nav-icon {
+    color: var(--clr-primary-1);
+    font-size: 1.2rem;
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+  }
+  .nav-icon:hover {
+    color: var(--clr-primary-5);
+  }
+}
+/*
+=============== 
+Hero
+===============
+*/
+.hero {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-color: var(--clr-primary-1);
+}
+.hero-banner {
+  text-align: center;
+  color: var(--clr-white);
+  padding: 0 3rem;
+}
+.hero-banner h1 {
+  text-transform: uppercase;
+}
+
+.hero-banner p {
+  max-width: 30rem;
+  margin: 2rem auto;
+  color: var(--clr-white);
+  letter-spacing: var(--spacing);
+}
+.hero-btn {
+  padding: 0.9rem 1.6rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: var(--clr-white);
+  font-size: 1.25rem;
+}
+.hero-btn:hover {
+  background: transparent;
+  color: var(--clr-white);
+  border: 2px solid var(--clr-white);
+  font-size: 1.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url("../images/background.jpg") center/cover no-repeat fixed;
+  }
+  .hero-banner {
+    padding: 0;
+  }
+  .hero-banner p {
+    max-width: 45rem;
+    font-size: 1rem;
+  }
+}
+
+.scrollToUp {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  z-index: 5;
+  bottom: 5rem;
+  right: 5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: transparent;
+  background-color: var(--clr-primary-5);
+  animation: bounce 2s infinite ease;
+  visibility: hidden;
+  cursor: pointer;
+}
+.showScroll {
+  visibility: visible;
+}
+.scrollToUp i {
+  color: var(--clr-white);
+  font-size: 1.2rem;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+/*
+=============== 
+Footer
+===============
+*/
+.footer {
+  background-color: var(--clr-grey-1);
+  padding-top: 2rem;
+}
+.footer-links {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+.footer-links,
+.footer-icons,
+.copy-right {
+  margin-bottom: 1.5rem;
+}
+.footer-link,
+.footer-icon,
+.copy-right {
+  color: var(--clr-white);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+.footer-link:hover,
+.footer-icon:hover {
+  color: var(--clr-primary-5);
+}
+.footer-link {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.footer-icons {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+.footer-icon {
+  font-size: 1.5rem;
+}
+.copy-right {
+  text-align: center;
+  opacity: 0.8;
+  font-size: 1rem;
+  max-width: 30rem;
+  margin: 0 auto;
+  letter-spacing: var(--spacing);
+}

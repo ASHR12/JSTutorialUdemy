@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Page</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <form class="section-center single-task-form">
+      <div class="title">
+        <h2>Edit task</h2>
+        <div class="title-underline"></div>
+      </div>
+      <div class="form-row">
+        <label for="task-id" class="form-label">task id</label>
+        <p class="task-edit-id">123456789</p>
+      </div>
+      <div class="form-row">
+        <label for="task-name" class="form-label">task name</label>
+        <input
+          type="text"
+          name="task-name"
+          class="form-input"
+          value="Complete UI task"
+        />
+      </div>
+      <div class="form-row">
+        <label for="completed" class="form-label"> completed</label>
+        <input type="checkbox" class="form-input" name="completed" />
+      </div>
+      <button type="submit" class="btn btn-block">Edit</button>
+      <div class="form-alert text-small">There was an error.</div>
+    </form>
+    <a href="./index.html" class="btn back-btn"> Back to tasks</a>
+  </body>
+</html>

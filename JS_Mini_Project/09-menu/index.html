@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <div class="section-center">
+      <div class="title">
+        <h1>Our Menu</h1>
+        <div class="title-underline"></div>
+      </div>
+      <div class="button-list">
+        <!-- Add button dynamically from javascript  -->
+        <!-- <button type="button" class="btn transparent-btn" data-id="all">
+          all
+        </button>
+        <button type="button" class="btn transparent-btn" data-id="breakfast">
+          breakfast
+        </button>
+        <button type="button" class="btn transparent-btn" data-id="lunch">
+          lunch
+        </button>
+        <button type="button" class="btn transparent-btn" data-id="shakes">
+          shakes
+        </button> -->
+      </div>
+      <div class="products">
+        <!-- single product -->
+        <article class="product">
+          <div class="product-image">
+            <img src="./images/burger.jpg" alt="burger" class="img" />
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h2>burger</h2>
+              <h4>$5</h4>
+            </div>
+            <div class="product-desc">
+              <p class="desc-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo a quaerat quo ea debitis deserunt architecto tenetur
+                nihil repellendus doloremque! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Consequuntur ut autem a optio ipsa
+                annimation minima fugiat, quasi nulla alias maxime reiciendis
+                minus consectetur dolore modi sed, voluptatibus omnis eius?
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- single product -->
+        <article class="product">
+          <div class="product-image">
+            <img src="./images/cake.jpg" alt="cake" class="img" />
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h2>cake</h2>
+              <h4>$10</h4>
+            </div>
+            <div class="product-desc">
+              <p class="desc-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Explicabo a quaerat quo ea debitis deserunt architecto tenetur
+                nihil repellendus doloremque!
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- single product -->
+        <article class="product">
+          <div class="product-image">
+            <img src="./images/pizza.jpg" alt="pizza" class="img" />
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h2>burger</h2>
+              <h4>$7</h4>
+            </div>
+            <div class="product-desc">
+              <p class="desc-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- single product -->
+        <article class="product">
+          <div class="product-image">
+            <img src="./images/pasta.jpg" alt="pasta" class="img" />
+          </div>
+          <div class="product-details">
+            <div class="product-header">
+              <h2>pasta</h2>
+              <h4>$12</h4>
+            </div>
+            <div class="product-desc">
+              <p class="desc-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Impedit
+                nostrum tempora fugiat eius. Dignissimos magnam repellat ipsum
+                consectetur similique, sunt hello world ashu laboriosam incidunt
+                fuga officiis sit architecto suscipit.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/4.1.0/dotdotdot.js"
+      integrity="sha512-y3NiupaD6wK/lVGW0sAoDJ0IR2f3+BWegGT20zcCVB+uPbJOsNO2PVi09pCXEiAj4rMZlEJpCGu6oDz0PvXxeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

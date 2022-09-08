@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main class="section-center">
+      <div class="title">
+        <h2>Tabs Project</h2>
+        <p class="title-info">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
+          aliquam ducimus, laboriosam molestiae animi ipsum.
+        </p>
+      </div>
+      <article class="tab-container">
+        <figure>
+          <img
+            class="img"
+            src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1659053856/samples/animals/three-dogs.jpg"
+            alt=""
+          />
+        </figure>
+        <section class="tabs-section">
+          <div class="btn-container">
+            <button class="tab-btn active" data-id="details">details</button>
+            <button class="tab-btn" data-id="history">history</button>
+            <button class="tab-btn" data-id="guide">care guide</button>
+          </div>
+          <div class="tab-content">
+            <!-- single item -->
+            <div class="content active" id="details">
+              <h4>details</h4>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Sapiente eligendi natus sint labore obcaecati molestias numquam
+                error officiis! Eveniet voluptatum ex consequatur commodi labore
+                tempora id excepturi ducimus possimus error? Quis sit laborum
+                cum dolores autem doloribus excepturi natus nisi!
+              </p>
+            </div>
+            <!-- end of single item -->
+            <!-- single item -->
+            <div class="content" id="history">
+              <h4>history</h4>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Voluptatibus, tempora! Deleniti fugiat reiciendis impedit est?
+                Nostrum praesentium rerum asperiores porro? Iusto illo,
+                voluptatibus voluptas sunt officiis consequuntur accusantium
+                tempora itaque, nemo laborum, possimus totam officia enim dolore
+                delectus! Nam a corrupti, ipsam esse odio beatae eveniet at
+                libero praesentium unde.
+              </p>
+              <ul>
+                <li>list item</li>
+                <li>list item</li>
+                <li>list item</li>
+              </ul>
+            </div>
+            <!-- end of single item -->
+            <!-- single item -->
+            <div class="content" id="guide">
+              <h4>care guide</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
+                obcaecati. Perferendis quas, temporibus cupiditate excepturi
+                suscipit facilis mollitia necessitatibus fuga reprehenderit illo
+                eum repellendus illum officiis aperiam dignissimos velit autem
+                labore nobis aut. Harum ab minus perspiciatis magni repellendus
+                iste qui nulla repudiandae eveniet assumenda, doloremque
+                voluptatem cumque, voluptatibus eligendi?
+              </p>
+            </div>
+            <!-- end of single item -->
+          </div>
+        </section>
+      </article>
+    </main>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

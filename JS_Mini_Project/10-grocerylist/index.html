@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <div class="section-center">
+      <div class="form grocery">
+        <div class="alert alert-danger">
+          <div class="form-alert">please enter value</div>
+        </div>
+        <div class="title">
+          <h2>Grocery List</h2>
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            id="task"
+            name="task"
+            class="form-input"
+            placeholder="e.g. Chicken"
+          />
+          <button type="submit" class="btn">submit</button>
+        </div>
+        <div class="grocery-list">
+          <!-- single item start-->
+          <article class="grocery-item">
+            <span class="title">chicken</span>
+            <div class="btn-container">
+              <!-- edit btn -->
+              <button type="button" class="edit-btn">
+                <i class="fa-solid fa-pen-to-square fa-fw"></i>
+              </button>
+              <!-- delete btn -->
+              <button type="button" class="delete-btn">
+                <i class="fa-solid fa-trash fa-fw"></i>
+              </button>
+            </div>
+          </article>
+          <!-- single item end-->
+          <!-- single item start-->
+          <article class="grocery-item">
+            <span class="title">eggs</span>
+            <div class="btn-container">
+              <!-- edit btn -->
+              <button type="button" class="edit-btn">
+                <i class="fa-solid fa-pen-to-square fa-fw"></i>
+              </button>
+              <!-- delete btn -->
+              <button type="button" class="delete-btn">
+                <i class="fa-solid fa-trash fa-fw"></i>
+              </button>
+            </div>
+          </article>
+          <!-- single item end-->
+        </div>
+        <button class="clear-btn">clear items</button>
+      </div>
+    </div>
+  </body>
+</html>

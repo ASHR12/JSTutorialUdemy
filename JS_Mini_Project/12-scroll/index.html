@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Project</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <!-- header  -->
+    <header id="home">
+      <!-- navbar start-->
+      <nav class="navbar">
+        <div class="nav-center">
+          <!-- nav-header -->
+          <div class="nav-header">
+            <img src="./images/logo.svg" alt="" class="nav-logo" />
+            <button type="button" class="nav-toggle" id="nav-toggle">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+          <!-- nav header end -->
+          <!-- start nav links -->
+          <ul class="nav-links" id="nav-links">
+            <li>
+              <a href="#home" class="nav-link scroll-link">home</a>
+            </li>
+            <li>
+              <a href="#about" class="nav-link scroll-link">about</a>
+            </li>
+            <li>
+              <a href="#services" class="nav-link scroll-link">services</a>
+            </li>
+            <li>
+              <a href="#featured" class="nav-link scroll-link">featured</a>
+            </li>
+            <li>
+              <a href="#gallery" class="nav-link scroll-link">gallery</a>
+            </li>
+          </ul>
+          <!-- end nav links -->
+          <!-- nav icons start-->
+          <ul class="nav-icons">
+            <li>
+              <a href="#" target="_blank" class="nav-icon">
+                <i class="fa-brands fa-twitter fa-fw"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" class="nav-icon">
+                <i class="fa-brands fa-facebook fa-fw"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" class="nav-icon">
+                <i class="fa-brands fa-instagram fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- nav icons end -->
+        </div>
+      </nav>
+      <!-- navbar end -->
+      <div class="hero">
+        <div class="hero-banner">
+          <h1>Scroll Project</h1>
+          <p>Dynamic link height on mobile devices.</p>
+          <!-- <a href="#featured" class="btn hero-btn scroll-link">
+            Explore Tours</a>-->
+        </div>
+      </div>
+      <!-- scroll to up button -->
+      <button class="scrollToUp">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </header>
+    <!-- end of header  -->
+
+    <!-- about section -->
+    <section class="section" id="about">
+      <!-- Title -->
+      <div class="section-title">
+        <h2>About <span>us</span></h2>
+      </div>
+    </section>
+    <!-- end of about section -->
+
+    <!-- services -->
+    <section class="section-services section" id="services">
+      <!-- Title -->
+      <div class="section-title">
+        <h2>our <span>services</span></h2>
+      </div>
+    </section>
+    <!--end services -->
+
+    <!-- featured tours -->
+    <section class="section" id="featured">
+      <!-- Title -->
+      <div class="section-title">
+        <h2>Featured <span>Tours</span></h2>
+      </div>
+    </section>
+    <!-- end of featured tours -->
+
+    <!-- contact -->
+    <section class="section section-contact" id="contact">
+      <!-- Title -->
+      <div class="section-title">
+        <h2>contact <span>us</span></h2>
+      </div>
+    </section>
+    <!-- end of contact -->
+
+    <!-- gallery  -->
+    <section class="section" id="gallery">
+      <!-- Title -->
+      <div class="section-title">
+        <h2>Our <span>gallery</span></h2>
+      </div>
+    </section>
+    <!-- end of gallery  -->
+
+    <!-- footer -->
+    <footer class="footer">
+      <!-- start footer links -->
+      <ul class="footer-links">
+        <li>
+          <a href="#home" class="footer-link scroll-link">home</a>
+        </li>
+        <li>
+          <a href="#featured" class="footer-link scroll-link">featured</a>
+        </li>
+        <li>
+          <a href="#about" class="footer-link scroll-link">about</a>
+        </li>
+        <li>
+          <a href="#services" class="footer-link scroll-link">services</a>
+        </li>
+        <li>
+          <a href="#gallery" class="footer-link scroll-link">gallery</a>
+        </li>
+      </ul>
+      <!-- end footer links -->
+      <!-- footer icons start-->
+      <ul class="footer-icons">
+        <li>
+          <a href="#" target="_blank" class="footer-icon">
+            <i class="fa-brands fa-twitter fa-fw"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" class="footer-icon">
+            <i class="fa-brands fa-facebook fa-fw"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" class="footer-icon">
+            <i class="fa-brands fa-instagram fa-fw"></i>
+          </a>
+        </li>
+      </ul>
+      <!-- footer icons end -->
+      <p class="copy-right">
+        Copyright &copy; ExploreNewPlace Travel Tours Company
+        <span id="date"></span>. All Rights Reserved
+      </p>
+    </footer>
+    <!-- js -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

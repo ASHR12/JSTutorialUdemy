@@ -269,81 +269,32 @@ ul {
   height: 0.25rem;
   margin: 0 auto;
 }
-/* countdown start */
+
+/* lorem ipsum start */
 
 .section-center {
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
 
-.give-away {
-  display: grid;
-  gap: 2rem;
-}
-.give-away figure {
-  margin: 0;
-}
-.give-away .img {
-  height: 22rem;
-}
-.desc h2 {
-  color: var(--primary-400);
-  text-transform: uppercase;
-}
-.desc h6 {
-  color: var(--grey-800);
-  text-transform: capitalize;
-  font-weight: bold;
-  font-family: var(--bodyFont);
+.lorem-form {
+  text-align: center;
+  margin: 2rem 0;
 }
 
-.desc p {
-  color: var(--grey-500);
+.lorem-form label {
   text-transform: capitalize;
-  padding: 2rem 0;
-}
-.deadline {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.deadline-format {
-  display: grid;
-  width: 5rem;
-  height: 5rem;
-  place-content: center;
-  background: var(--grey-900);
-  color: var(--white);
-  text-align: center;
-}
-.deadline-format span {
-  text-transform: uppercase;
-}
-h6.expired {
-  color: var(--red-dark);
-  padding-top: 1rem;
-  text-align: center;
-}
-section.radio-section {
-  margin-bottom: 2rem;
-}
-label {
   font-size: 1.2rem;
-  color: var(--primary-500);
-  text-transform: capitalize;
 }
-.date-selection {
-  display: none;
+.lorem-form input {
+  border: transparent;
+  height: 28px;
+  width: 60px;
 }
-.show {
-  display: block;
+
+.lorem-text {
+  color: var(--grey-400);
 }
-.date-selection .btn {
-  margin-left: 2rem;
-}
-@media (min-width: 992px) {
-  .give-away {
-    grid-template-columns: 1fr 1fr;
-  }
+.info {
+  color: var(--red-dark);
 }

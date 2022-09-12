@@ -288,6 +288,19 @@ ul {
 
 /* Grocery Start*/
 
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 600px;
+  background: var(--white);
+  box-shadow: var(--shadow3);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+.grocery .alert {
+  text-align: center;
+}
 .grocery .title {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -304,11 +317,14 @@ ul {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-
+.grocery-container {
+  visibility: hidden;
+}
 .grocery-list {
   margin: 1rem 0;
   display: grid;
   row-gap: 1rem;
+  transition: var(--transition);
 }
 .grocery-item {
   display: flex;
@@ -328,6 +344,7 @@ ul {
 .grocery-item button {
   border: transparent;
   background: transparent;
+  cursor: pointer;
 }
 .edit-btn {
   font-size: 0.8rem;
@@ -346,5 +363,10 @@ ul {
   cursor: pointer;
   font-size: 1.2rem;
   text-align: center;
-  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.show {
+  visibility: visible;
 }

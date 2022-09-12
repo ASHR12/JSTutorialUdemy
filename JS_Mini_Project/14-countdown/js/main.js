@@ -1,6 +1,7 @@
 var countDown;
 const date_time = document.querySelector(".date_time");
 const deadline = document.querySelector(".deadline");
+const expired = document.querySelector(".expired");
 const items = document.querySelectorAll(".deadline-format h4");
 const dateSection = document.querySelector(".date-selection");
 var radios = document.querySelectorAll('input[type=radio][name="test-option"]');
@@ -9,11 +10,13 @@ radios.forEach((radio) =>
   radio.addEventListener("change", function (e) {
     console.log(radio.value);
     if (radio.value === "default") {
+      expired.innerHTML = "";
       dateSection.classList.remove("show");
       console.log("default", countDown);
       clearInterval(countDown);
       defaultSetup();
     } else {
+      expired.innerHTML = "";
       clearInterval(countDown);
       dateSection.classList.add("show");
     }
@@ -25,6 +28,8 @@ const end_time = document.querySelector("#end");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+  expired.innerHTML = "";
+  clearInterval(countDown);
   console.log(end_time.value);
   let endDate = new Date(end_time.value);
   console.log(endDate);
@@ -91,8 +96,12 @@ const getRemainingTime = function (endTime) {
   }
   //console.log(t);
   if (t < 0) {
+    const startValue = [00, 00, 00, 00];
+    items.forEach(function (item, index) {
+      item.innerHTML = format(startValue[index]);
+    });
     // clearing the setInterval when current time is bigger than future end date so it will stop calling getRemainingTime function
     clearInterval(countDown);
-    deadline.innerHTML = `<h6 class='expired'> Sorry, this giveaway has expired.</h6>`;
+    expired.innerHTML = `<h6 class='expired'> Sorry, this giveaway has expired.</h6>`;
   }
 };

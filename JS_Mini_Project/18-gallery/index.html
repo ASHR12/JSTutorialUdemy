@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <section class="section-center">
+      <div class="title">
+        <h1>Breakfast</h1>
+        <div class="title-underline"></div>
+      </div>
+      <div class="gallery breakfast">
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-1_xcyfse.jpg"
+          title="buttermilk pancakes"
+          class="img"
+          data-id="1"
+          alt="buttermilk pancakes"
+        />
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-4_egtlqi.jpg"
+          title="country delight"
+          class="img"
+          data-id="2"
+          alt="country delight"
+        />
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449828/menu/item-7_jvuw8c.jpg"
+          title="bacon overflow"
+          class="img"
+          data-id="3"
+          alt="bacon overflow"
+        />
+      </div>
+    </section>
+    <section class="section-center">
+      <div class="title">
+        <h1>Lunch</h1>
+        <div class="title-underline"></div>
+      </div>
+      <div class="gallery lunch">
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-2_ociel1.jpg"
+          title="diner double"
+          data-id="1"
+          class="img"
+          alt="diner double"
+        />
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-5_ohpape.jpg"
+          title="egg attack"
+          data-id="2"
+          class="img"
+          alt="egg attack"
+        />
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449828/menu/item-8_noaeya.jpg"
+          title="american classic"
+          data-id="3"
+          class="img"
+          alt="american classic"
+        />
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449828/menu/item-10_gqyt4f.jpg"
+          title="pan-seared steak"
+          data-id="4"
+          class="img"
+          alt="pan-seared steak"
+        />
+      </div>
+    </section>
+    <div class="modal-overlay">
+      <button class="close-btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-container">
+        <!-- prev next buttons -->
+        <button class="prev-btn">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="next-btn">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <!-- content -->
+        <img
+          src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-1_xcyfse.jpg"
+          class="main-img"
+          alt="buttermilk pancakes"
+        />
+        <h3 class="image-name">buttermilk pancakes</h3>
+        <div class="modal-images">
+          <img
+            src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-1_xcyfse.jpg"
+            title="buttermilk pancakes"
+            class="modal-img"
+            data-id="1"
+            alt="buttermilk pancakes"
+          />
+          <img
+            src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449827/menu/item-4_egtlqi.jpg"
+            title="country delight"
+            class="modal-img"
+            data-id="2"
+            alt="country delight"
+          />
+          <img
+            src="https://res.cloudinary.com/ashutosh-shrivastava/image/upload/v1662449828/menu/item-7_jvuw8c.jpg"
+            title="bacon overflow"
+            class="modal-img"
+            data-id="3"
+            alt="bacon overflow"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/main-class.js"></script>
+</html>

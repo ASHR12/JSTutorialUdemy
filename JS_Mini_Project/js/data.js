@@ -79,4 +79,14 @@ const projects = [
     title: "slider",
     link: "16-slider",
   },
+  {
+    id: 17,
+    title: "counter Two",
+    link: "17-counter-two",
+  },
+  {
+    id: 18,
+    title: "Gallery",
+    link: "18-gallery",
+  },
 ];

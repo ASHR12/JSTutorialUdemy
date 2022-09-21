@@ -22,6 +22,13 @@
     - [Global events](#global-events)
     - [Width and Height](#width-and-height)
     - [resize event](#resize-event)
+  - [Objects](#objects-1)
+    - [this keyword](#this-keyword)
+    - [Factory Function](#factory-function)
+    - [Constructor](#constructor)
+    - [Prototypal Property](#prototypal-property)
+  - [ES6 Classes](#es6-classes)
+  - [Call, Apply and Bind](#call-apply-and-bind)
 
 ## Javascript Basics
 
@@ -839,3 +846,385 @@ window.addEventListener("scroll", function () {
 ### resize event
 
 - fires when the document view (window) has been resized.
+
+## Objects
+
+- Object literal syntax {}
+- dot notation vs bracket notation
+- nested object
+- set variable as property value
+
+```javascript
+const car = {
+  make: "Bugatti",
+  model: "Chiron",
+  colors: ["Blue", "black"],
+  hybrid: true,
+  drive: () => {
+    console.log("driving");
+  },
+  stop() {
+    console.log("stopping");
+  },
+};
+
+console.log(car.make);
+console.log(car.colors[0]);
+car.drive();
+car.stop();
+//change value
+car.model = "veron";
+// add new value;
+car.releaseYear = 2022;
+// delete
+delete car.hybrid;
+console.log(car);
+```
+
+```javascript
+// Nested object Example
+const age = 31;
+const address = "Bangalore";
+let dynamicVariable = "favorite food";
+// You can reassign the variable and use it .. not used regularly but you can find use case in react application.
+dynamicVariable = "job";
+const person = {
+  name: "ashutosh",
+  // set variable as property value
+  age: age,
+  // es6 syntax if variable name is same as property name
+  address,
+  married: true,
+  greet(name) {
+    console.log(`Hello ${name}`);
+  },
+  job: {
+    title: "AEM developer",
+    company: {
+      name: "wipro",
+      address: "bangalore",
+    },
+  },
+  "random-value": "random text value",
+  "favorite food": "Biryani",
+};
+
+console.log(person.job.title);
+console.log(person.job.company.name);
+console.log(person);
+console.log(person["random-value"]);
+console.log(person[dynamicVariable]);
+console.log(person["age"]);
+console.log(person["job"]["title"]);
+console.log(person["job"]["company"]["name"]);
+```
+
+### this keyword
+
+- points to the left of the dot
+- In regular function (not arrow) **this** determined by **how** a function is invoked (left of .)
+- default to global - **window**
+
+```javascript
+// This example
+
+const personalInfo = {
+  firstName: "ashutosh",
+  lastName: "shrivastava",
+  fullName: function () {
+    console.log(this);
+    console.log(`My fullname is ${this.firstName} ${this.lastName}`);
+  },
+};
+// left to the dot is personalInfo so this is pointing to personalInfo object
+personalInfo.fullName();
+personalInfo["firstName"] = "sharon";
+personalInfo["lastName"] = "prittina";
+personalInfo.fullName();
+```
+
+```javascript
+function showThis() {
+  console.log(this);
+}
+const ashutosh = {
+  name: "Ashutosh Shrivastava",
+  showThis: showThis,
+};
+// this inside showThis will point to ashutosh
+ashutosh.showThis();
+// this inside showThis will point to window
+showThis();
+const btn = document.querySelector(".btn");
+// this inside showThis will point to btn
+btn.addEventListener("click", showThis);
+btn.addEventListener("click", function () {
+  // this inside showThis will point to window
+  showThis();
+});
+```
+
+### Factory Function
+
+```javascript
+// Factory function
+
+function createPerson(firstName, lastName) {
+  return {
+    firstName: firstName,
+    lastName: lastName,
+    fullName: function () {
+      console.log(this);
+      console.log(`My fullname is ${this.firstName} ${this.lastName}`);
+    },
+  };
+}
+
+const ashu = createPerson("ashutosh", "shrivastava");
+ashu.fullName();
+
+const ethan = createPerson("Ethan Shaurya", "Shrivastava");
+ethan.fullName();
+```
+
+### Constructor
+
+- Use Capital Case for Constructor (Standard but not mandatory)
+- new - creates new object , points to it and omit return
+- All objects in javascript have access to constructor property that returns a constructor function that created it.
+- built in constructor functions.
+- array and functions are objects in javascript.
+
+```javascript
+// Constructor
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.fullName = function () {
+    console.log(
+      `My fullname is ${this.firstName} ${this.lastName} and i love JS`
+    );
+  };
+  console.log(this);
+}
+
+const leo = new Person("Leo", "Messi");
+console.log(leo.constructor);
+// points to function Person
+
+// Using leo constructor which actually points to Person to create xavi object , not typically used but good to know.
+const xavi = new leo.constructor("xavi", "hernandez");
+xavi.fullName();
+
+const neymar = {};
+console.log(neymar.constructor);
+// ƒ Object() { [native code] }
+
+const list = [];
+console.log(list.constructor);
+//ƒ Array() { [native code] }
+
+const sayHi = function () {};
+console.log(sayHi.constructor);
+// ƒ Function() { [native code] }
+```
+
+### Prototypal Property
+
+- Javascript uses prototypal inheritance model. That means that every constructor function/class has a prototype property that is shared by every instance of the constructor/class . So any properties and methods or prototype can be accessed by every instance. prototype property returns object.
+- Property Lookup :- If child doesn't have ask parent.
+- everything in JS is an Object.
+  - **Note :-** Each prototype has prototype whose constructor is object (f Object())
+
+```javascript
+// Prototypal Property
+function Account(name, initialBalance) {
+  this.name = name;
+  this.balance = initialBalance;
+  this.bank = "HSBC";
+  // instead of creating method as a part of instance define in prototype.
+  // this.deposit = function (amount) {
+  //   this.balance += amount;
+  //   console.log(`Hello ${this.name}, your balance is ${this.balance}`);
+  // };
+}
+Account.prototype.bank = "HDFC";
+Account.prototype.deposit = function (amount) {
+  this.balance += amount;
+  console.log(`Hello ${this.name}, your balance is ${this.balance}`);
+};
+// when you create instance you don't copy methods but have access to them bcoz they are stored in prototype.
+const robin = new Account("robin", 1000);
+const zee = new Account("Zee", 0);
+console.log(robin);
+// this will return HSBC because instance of bank property but if property is not present in instance then it will look up in parent prototype.
+console.log(robin.bank);
+robin.deposit(500);
+zee.deposit(5000);
+//object :- in console you can see that you have prototype where all methods are stored.
+console.log({});
+//array :- in console you can see that you have prototype where all methods are stored.
+console.log([]);
+```
+
+## ES6 Classes
+
+- Syntactic Sugar
+- Prototypal Inheritance
+- Cleaner syntax
+- Use first letter as Capital case.
+- use this inside constructor.
+- no need to add this for property inside class .
+- methods will be in prototype and properties will be in each instance.
+- Access to all properties which is setup inside constructor or inside class.
+
+```javascript
+class Account {
+  constructor(name, initialBalance) {
+    this.name = name;
+    this.balance = initialBalance;
+  }
+  bank = "HSBC";
+  deposit(amount) {
+    this.balance += amount;
+    console.log(`Hello ${this.name}, your balance is ${this.balance}`);
+  }
+}
+
+const robin = new Account("robin", 1000);
+console.log(robin);
+console.log(robin.initialBalance);
+robin.deposit(500);
+
+const zee = new Account("zee", 0);
+console.log(zee);
+console.log(zee.bank);
+zee.deposit(2000);
+```
+
+## Call, Apply and Bind
+
+- **call** runs instantly , argument - list of items.
+- **Apply** runs instantly , argument - array of items.
+- **Bind** assign, use later , argument - list of items.
+
+```javascript
+// call
+const ashu = {
+  name: "ashutosh",
+  age: 24,
+  greet: function (city, country) {
+    console.log(this);
+    console.log(
+      `Hi, I am ${this.name} and i am ${this.age} old and i live in ${city},${country}`
+    );
+  },
+};
+
+const sharon = {
+  name: "sharon",
+  age: 24,
+};
+
+function greet(city, country) {
+  console.log(this);
+  console.log(
+    `Hello, I am ${this.name} and i am ${this.age} years old and i live in ${city},${country}`
+  );
+}
+
+greet.call(ashu, "Bangalore", "India");
+greet.call(sharon, "Bangalore", "India");
+greet.call({ name: "ethan", age: 3 }, "Bangalore", "India");
+// calling greet of ashu but passing sharon object
+ashu.greet.call(sharon, "Bangalore", "India");
+```
+
+```javascript
+//Apply example
+const ashu = {
+  name: "ashutosh",
+  age: 24,
+  greet: function (city, country) {
+    console.log(this);
+    console.log(
+      `Hi, I am ${this.name} and i am ${this.age} old and i live in ${city},${country}`
+    );
+  },
+};
+
+const sharon = {
+  name: "sharon",
+  age: 24,
+};
+
+function greet(city, country) {
+  console.log(this);
+  console.log(
+    `Hello, I am ${this.name} and i am ${this.age} years old and i live in ${city},${country}`
+  );
+}
+
+greet.apply(ashu, ["Bangalore", "India"]);
+greet.apply(sharon, ["Bangalore", "India"]);
+greet.apply({ name: "ethan", age: 3 }, ["Bangalore", "India"]);
+// calling greet of ashu but passing sharon object
+ashu.greet.apply(sharon, ["Bangalore", "India"]);
+```
+
+```javascript
+// Bind example
+const ashu = {
+  name: "ashutosh",
+  age: 24,
+  greet: function (city, country) {
+    console.log(this);
+    console.log(
+      `Hi, I am ${this.name} and i am ${this.age} old and i live in ${city},${country}`
+    );
+  },
+};
+
+const sharon = {
+  name: "sharon",
+  age: 24,
+};
+
+function greet(city, country) {
+  console.log(this);
+  console.log(
+    `Hello, I am ${this.name} and i am ${this.age} years old and i live in ${city},${country}`
+  );
+}
+
+// assign and call it later
+
+const sharonGreet = greet.bind(sharon, "Bangalore", "India");
+sharonGreet();
+
+const sharonGreetTwo = ashu.greet.bind(sharon, "Coimbatore", "India");
+sharonGreetTwo();
+```
+
+```javascript
+const counter = {
+  count: 0,
+  increment() {
+    console.log(this);
+    this.count++;
+    console.log(this.count);
+  },
+};
+
+const btn = document.querySelector(".increment");
+// fail because this is pointing to btn
+//btn.addEventListener("click", counter.increment);
+
+// some edge cases -- if we remove addEventListener then we will not have reference to increment function.
+//btn.addEventListener("click", counter.increment.bind(counter));
+
+// Will always work.
+const incrementValue = counter.increment.bind(counter);
+btn.addEventListener("click", incrementValue);
+btn.removeEventListener("click", incrementValue);
+```

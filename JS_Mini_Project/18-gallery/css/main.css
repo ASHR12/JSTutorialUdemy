@@ -52,7 +52,7 @@ html {
   --textColor: var(--grey-900);
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
-  --transition: 0.3s ease-in-out all;
+  --transition: 0.3s linear all;
   --max-width: 1200px;
   --fixed-width: 600px;
   --shadow1: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -288,48 +288,128 @@ ul {
   border: 2px solid var(--grey-900);
   color: var(--white);
 }
-/* counter start */
-.button-list .transparent-btn {
-  padding: 0.4rem 1.5rem;
-  margin-top: 0;
-}
+/* Gallery start */
 
-.counter {
+.section-center {
+  padding: 2rem 0;
+}
+.section-center .title {
+  margin-bottom: 2rem;
+}
+.gallery {
   display: grid;
-  min-height: 100vh;
-  place-items: center;
+  gap: 2rem;
 }
 
-.counter .section-center {
-  text-align: center;
+.gallery .img {
+  height: 15rem;
+  border-radius: var(--borderRadius);
+  cursor: pointer;
+  transition: var(--transition);
 }
-.counter h1 {
-  font-size: 5rem;
-  font-weight: 900;
-  letter-spacing: var(--letterSpacing);
+
+.gallery .img:hover {
+  box-shadow: var(--shadow4);
 }
-#value {
-  font-size: 8rem;
-  font-weight: 900;
-  letter-spacing: var(--letterSpacing);
-}
-.button-list {
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); */
-  /* grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); */
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+
+@media (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (min-width: 992px) {
-  .section-center {
-    max-width: var(--fixed-width);
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.positive {
-  color: green;
+/* Modal css */
+
+.modal-overlay {
+  position: fixed;
+  background: black;
+  inset: 0;
+  opacity: 0;
+  /* we can use display:none but transition effect will not apply */
+  z-index: -10;
+  transition: var(--transition);
 }
-.negative {
-  color: red;
+.open-modal {
+  /* if used display none as default we need to used display:grid */
+  opacity: 1;
+  z-index: 10;
+}
+
+.main-img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: var(--borderRadius);
+}
+.modal-container {
+  width: 80%;
+  max-width: var(--fixed-width);
+  position: relative;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  border: transparent;
+  background: transparent;
+  color: var(--white);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.close-btn:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  font-size: 2rem;
+  border: transparent;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.prev-btn {
+  top: 10rem;
+  left: -3rem;
+  transform: translate(50%, -50%);
+}
+
+.next-btn {
+  top: 10rem;
+  right: -3rem;
+  transform: translate(-50%, -50%);
+}
+
+.image-name {
+  color: var(--white);
+  text-align: center;
+}
+.modal-images {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+}
+.modal-img {
+  width: 100%;
+  height: 4rem;
+  object-fit: cover;
+  opacity: 25%;
+  transition: var(--transition);
+}
+
+.modal-img:hover {
+  opacity: 100%;
+}
+.selected {
+  opacity: 100%;
 }

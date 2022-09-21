@@ -302,21 +302,20 @@ ul {
 
 .counter .section-center {
   text-align: center;
+  display: grid;
+  gap: 2rem;
 }
 .counter h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 900;
   letter-spacing: var(--letterSpacing);
 }
 #value {
-  font-size: 8rem;
+  font-size: 4rem;
   font-weight: 900;
   letter-spacing: var(--letterSpacing);
 }
 .button-list {
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); */
-  /* grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); */
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -332,4 +331,10 @@ ul {
 }
 .negative {
   color: red;
+}
+
+div[class*="counter-"] {
+  background: var(--white);
+  box-shadow: var(--shadow2);
+  padding: 2rem;
 }

@@ -27,8 +27,29 @@
     - [Factory Function](#factory-function)
     - [Constructor](#constructor)
     - [Prototypal Property](#prototypal-property)
-  - [ES6 Classes](#es6-classes)
-  - [Call, Apply and Bind](#call-apply-and-bind)
+    - [ES6 Classes](#es6-classes)
+    - [Call, Apply and Bind](#call-apply-and-bind)
+  - [Functions](#functions-1)
+    - [IIFE](#iife)
+    - [Hoisting](#hoisting)
+    - [Closure](#closure)
+  - [ES6](#es6)
+    - [variable](#variable-1)
+    - [Template Literals / String](#template-literals--string)
+    - [Arrow functions / Fat Arrow functions](#arrow-functions--fat-arrow-functions)
+    - [Basic this example](#basic-this-example)
+    - [Destructuring](#destructuring)
+    - [New String methods](#new-string-methods)
+    - [for of](#for-of)
+    - [for in](#for-in)
+    - [Spread operator [...]](#spread-operator-)
+    - [Rest Operator](#rest-operator)
+    - [Array.from and Array.of](#arrayfrom-and-arrayof)
+    - [find,findIndex,every,some](#findfindindexeverysome)
+    - [Convert objects into arrays](#convert-objects-into-arrays)
+    - [Set Object](#set-object)
+    - [String includes](#string-includes)
+    - [Array includes()](#array-includes)
 
 ## Javascript Basics
 
@@ -923,6 +944,7 @@ console.log(person["job"]["company"]["name"]);
 
 - points to the left of the dot
 - In regular function (not arrow) **this** determined by **how** a function is invoked (left of .)
+- refers to parent , left of the dot.
 - default to global - **window**
 
 ```javascript
@@ -1067,7 +1089,7 @@ console.log({});
 console.log([]);
 ```
 
-## ES6 Classes
+### ES6 Classes
 
 - Syntactic Sugar
 - Prototypal Inheritance
@@ -1102,7 +1124,7 @@ console.log(zee.bank);
 zee.deposit(2000);
 ```
 
-## Call, Apply and Bind
+### Call, Apply and Bind
 
 - **call** runs instantly , argument - list of items.
 - **Apply** runs instantly , argument - array of items.
@@ -1227,4 +1249,1096 @@ const btn = document.querySelector(".increment");
 const incrementValue = counter.increment.bind(counter);
 btn.addEventListener("click", incrementValue);
 btn.removeEventListener("click", incrementValue);
+```
+
+## Functions
+
+### IIFE
+
+- **IIFE** Immediately invoked function expression.
+- this is older approach- new approach is modules
+- simple approach to avoid global scope pollution.
+- good way at protecting the scope of your function and the variables within it.
+- global namespace , extra steps
+
+```javascript
+const num1 = 30;
+const num2 = 20;
+
+function add() {
+  console.log(`Add value is ${num1 + num2}`);
+}
+add();
+
+// IIFE
+
+// Anonymous function 1 invoking directly by wrapping in () and adding () at the end.
+(function (a, b) {
+  const num3 = 30;
+  const num4 = 20;
+  console.log(`Add value is ${num3 + num4}`);
+})();
+
+// Anonymous function 2 with passing argument
+(function (a, b) {
+  console.log(`Add value is ${a + b}`);
+})(40, 50);
+
+// return result Anonymous function 3 with passing argument
+const result = (function (a, b) {
+  return a + b;
+})(100, 50);
+
+console.log(result);
+```
+
+### Hoisting
+
+- function and var declarations are hoisted.
+- safer to access only after initialized.
+
+```javascript
+display();
+complexFunc(); // this will throw error as firstName and lastName can't be referenced here.
+console.log(age); // undefined
+//console.log(firstNname); // Cannot access 'firstNname' before initialization
+//console.log(lastName); //Cannot access 'lastName' before initialization
+const firstNname = "Ashutosh";
+let lastName = "Shrivastava";
+// This can be called even before declaration bcoz when class will run javascript will put this at the start of the file but will be undefined.
+var age = 31;
+console.log(age); // 31
+console.log(firstNname); //Ashutosh
+console.log(lastName); //Shrivastava
+
+function display() {
+  console.log(
+    `This function can be called even before declaration bcoz when class will run javascript will put this at the start of the file before anything else`
+  );
+}
+function complexFunc() {
+  console.log(`Hello your name is ${firstNname} ${lastName}`);
+}
+
+complexFunc(); // This will work properly.
+```
+
+### Closure
+
+- closure gives you an access to an outer function's scope from inner function
+- make private variables with closure.
+
+```javascript
+function outer() {
+  let privateVar = "XXXXXX";
+  function inner() {
+    console.log(`From Inner function and secret value is ${privateVar}`);
+  }
+  return inner;
+}
+
+//console.log(privateVar); // This will throw error as it's out of scope.
+console.log(outer()); // This will return signature of inner function
+console.log(outer()()); // This will execute inner function and will have access to privateVar.
+
+const value = outer();
+console.log(value); // This will return signature of inner function
+console.log(value()); // This will execute inner function and will have access to privateVar.
+```
+
+**Basic example**
+
+```javascript
+function newAccount(name, initialBalance) {
+  let balance = initialBalance;
+  function showBalance() {
+    console.log(`Hey ${name}, your balance is ${balance}`);
+  }
+  return showBalance;
+}
+
+newAccount("ashutosh", 500)();
+
+const ethan = newAccount("Ethan", 1000);
+const sharon = newAccount("Sharon", 1500);
+ethan();
+sharon();
+
+// Note:- for each instance of newAccount is created showBalance remembers what was the value when newAccount was invoked.
+```
+
+**Complete example**
+
+```javascript
+function newAccount(name, initialBalance) {
+  let balance = initialBalance;
+  function showBalance() {
+    console.log(`Hey ${name}, your balance is ${balance}`);
+  }
+  function deposit(amount) {
+    balance += amount;
+    showBalance();
+  }
+  function withdraw(amount) {
+    if (amount > balance) {
+      console.log(`Hey ${name}, Not enough funds`);
+      return;
+    } else {
+      balance -= amount;
+      showBalance();
+    }
+  }
+  /*return method instead of function by
+   converting it to object. */
+  return { showBalance: showBalance, deposit: deposit, withdraw: withdraw };
+}
+
+const ethan = newAccount("Ethan", 1000);
+const sharon = newAccount("Sharon", 1500);
+ethan.showBalance();
+ethan.deposit(500);
+sharon.showBalance();
+sharon.withdraw(1000);
+
+/* Note:- for each instance of newAccount
+ is created showBalance remembers 
+ what was the value when newAccount was invoked. */
+```
+
+## ES6
+
+### variable
+
+1. Must start with letter ,$ or \_
+2. No keyword
+3. camelCase or underscore
+4. case sensitive - fullName vs FullName
+
+- **var**
+
+1. var variables can be re-declared and updated
+2. function scoped.
+
+```javascript
+// defining variable
+var greeter = "Hello";
+// re defining
+var greeter = "Hey";
+```
+
+```javascript
+var greeting = "Hello";
+// updating variable
+greeting = "Hey";
+```
+
+```javascript
+var greeting = "Hello";
+if (true) {
+  var greeting = "Hi"; // if defined as var it will change the value outside block scoped as well.
+  console.log(greeting); // "Hi"
+}
+console.log(greeting); // "Hi"
+```
+
+- **let**
+
+1. let is block scoped
+2. A block is a chunk of code bounded by {}.
+3. let can be updated but not re-declared.
+
+```javascript
+let greeting = "Hello";
+greeting = "Hey";
+```
+
+```javascript
+let greeting = "Hello";
+let greeting = "Hey"; // error: Identifier 'greeting' has already been declared
+
+// if the same variable is defined in different scopes, there will be no error
+let greeting = "Hello";
+if (true) {
+  let greeting = "Hi";
+  console.log(greeting); // "Hi"
+}
+console.log(greeting); // "Hello"
+```
+
+- **const**
+
+1. const declarations are block scoped.
+2. const cannot be updated or re-declared
+3. we should always assign value while declaring const.
+4. Cannot mutate the primitive type but if it's object or array we can change the value.
+
+```javascript
+const greeting = "Hello";
+greeting = "Hey"; // error: Assignment to constant variable.
+```
+
+```javascript
+const greeting = "Hello";
+const greeting = "Hey"; // error: Assignment to constant variable.
+```
+
+```javascript
+const greeting; // error: Missing initializer in constant declaration.
+```
+
+```javascript
+const person = {
+  name: "ashutosh",
+};
+person.name = "ethan"; //  it's object or array we can change the value.
+console.log(person.name);
+```
+
+```javascript
+const greeting = "Hello";
+if (true) {
+  const greeting = "Hi there";
+  console.log(greeting); // "Hi there"
+}
+console.log(greeting); // "Hello"
+```
+
+### Template Literals / String
+
+- help to create string easily.
+- powerful while inserting html dynamic .
+- tagged template literals.
+  - use spread operator ... args , it will copy all the variable so we don't have do define arg1,arg2 if there are multiple.
+  - note text array will always have one more value than variable.
+
+```javascript
+const firstName = "Ashutosh";
+const lastName = "Shrivastava";
+const age = 31;
+
+const phrase = `My full name is ${firstName} ${lastName} and I'm ${age} years old`;
+const phrase2 = `My full name is ${firstName.toUpperCase()} ${lastName.toUpperCase()} and I'm ${age} years old`;
+
+console.log(phrase); // My full name is Ashutosh Shrivastava and I'm 31 years old
+```
+
+```javascript
+const person = {
+  name: "ashutosh",
+  job: "devloper",
+  hobbies: ["cooking", "football"],
+};
+
+const result = document.getElementById("result");
+
+result.innerHTML = `<h2>${person.name}</h2>
+<p>${person.job}</p>
+<ul>
+${person.hobbies
+  .map((item) => {
+    return `<li>${item}</li>`;
+  })
+  .join("")}
+</ul>
+`;
+```
+
+```javascript
+const firstName = "Ashutosh";
+const lastName = "Shrivastava";
+const age = 31;
+
+const phrase = highlight`My full name is ${firstName} ${lastName} and I am ${age} years old.`;
+const result = document.getElementById("result");
+
+result.innerHTML = `${phrase}`;
+
+// use spread operator ... args , it will copy all the variables so we don't have do define arg1,arg2 if there are multiple.
+function highlight(text, ...args) {
+  console.log({ text, args });
+  const result = text.map((item, index) => {
+    return `${item} <strong class='taggedClass'>${args[index] || ""}</strong>`;
+  });
+  return result;
+}
+```
+
+### Arrow functions / Fat Arrow functions
+
+- No name , always expression , assign to variable.
+- no function keyword.
+- **this** :- refers to it's **current surrounding scope**.
+- In regular function (not arrow) **this** determined by **how** a function is invoked (left of .) , refers to **parent** , **left of the dot**.
+- Use arrow function when necessarily ntt all the time.
+
+```javascript
+// if one line then no need of {} or return
+const sayHello = () => console.log("Hello");
+sayHello();
+
+// if one param we can remove ()
+// one line code will have implicit return so it will always return even without writing return.
+const double = (value) => value * 2;
+const res = double(5);
+console.log(res);
+
+// Two params and more than one line
+
+const multiply = (num1, num2) => {
+  const res = num1 * num2;
+  // more code;
+  return res;
+};
+console.log(multiply(5, 6));
+
+// return object without return keyword then you can wrap in ()
+const obj = () => ({ name: "Ashutosh", age: "31" });
+console.log(obj());
+
+// return object with return keyword
+const obj2 = () => {
+  return { name: "Sharon", age: "31" };
+};
+
+const person = obj2();
+console.log(person);
+
+// Call back function with anonymous arrow functions.
+// filter method.
+// add eventlistener
+
+const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const big = number.filter((number) => number > 5);
+console.log(big);
+const small = number.filter((number, index) => {
+  console.log(index);
+  return number < 5;
+});
+console.log(small);
+
+const btnElement = document.querySelector(".btn");
+
+btnElement.addEventListener("click", (e) => {
+  console.log(e.target);
+});
+```
+
+### Basic this example
+
+```javascript
+const ashu = {
+  name: "Ashutosh",
+  age: 24,
+  greet: function () {
+    const self = this;
+    setTimeout(function () {
+      /* this will refer to window as in call back function 
+      after 2 sec this refers to window (parent) . */
+      /* 
+      We can solve this 
+      by using self
+       */
+      console.log(this);
+      console.log(`Hello from ${self.name}`);
+    }, 2000);
+  },
+};
+
+const ethan = {
+  name: "Ethan",
+  age: 3,
+  greet: function () {
+    const self = this;
+    setTimeout(() => {
+      // current surrounding scope is ethan for this.
+      console.log(this);
+      console.log(`Hola from ${this.name}`);
+    }, 2000);
+  },
+};
+
+const sharon = {
+  name: "Sharon",
+  age: 24,
+  greet: () => {
+    console.log(this);
+    console.log(`Hello from ${this.name}`);
+  },
+};
+
+ashu.greet();
+sharon.greet();
+ethan.greet();
+```
+
+### Destructuring
+
+- Faster/Easier ways to access/unpack values from arrays and objects in to variables.
+- swap variables easily.
+- **Array Example**
+  - return undefined if it's out of index.
+
+```javascript
+const fruits = ["orange", "banana", "lemon"];
+const friends = ["nitish", "abhishek", "nilay"];
+
+// destructuring
+const [f1, f2, f3, f4] = friends;
+// return undefined if it's out of index.
+console.log(f1, f2, f3, f4); // nitish abhishek nilay undefined
+
+// for skipping value just add ","
+const [fr1, , fr2] = friends;
+console.log(fr1, fr2);
+
+/* Swap value */
+
+let first = "ashutosh";
+let second = "Sharon";
+
+console.log(first, second);
+// swapping value using destructuring .
+[second, first] = [first, second];
+console.log(first, second);
+```
+
+- **Object Example**
+  - Unlike arrays name has to match.
+  - if properties is not there then undefined will return .
+  - if you want the change the name use alias 'property :alias'
+
+```javascript
+/* Object Destructuring */
+
+const ashutosh = {
+  fname: "ashutosh",
+  age: 31,
+  city: "Bangalore",
+  siblings: {
+    sister: ["A", "B", "C"],
+    brother: ["D", "E", "F"],
+  },
+  parents: {
+    father: "Sachida",
+    mother: "Usha",
+  },
+  JobDetails: ["Accenture", "Sapient", "Wipro"],
+};
+
+const {
+  fname: first,
+  age,
+  city,
+  zip,
+  siblings: {
+    sister: [a, b],
+    brother: favBro,
+  },
+  parents: { father: FATHER, mother: MOTHER },
+  JobDetails: [firstCompany, SecondCompany],
+} = ashutosh;
+
+console.log(
+  first,
+  age,
+  city,
+  zip,
+  favBro,
+  FATHER,
+  MOTHER,
+  firstCompany,
+  SecondCompany,
+  a,
+  b
+);
+```
+
+- **Object Example with function parameters**
+
+```javascript
+const ashutosh = {
+  fname: "ashutosh",
+  age: 31,
+  city: "Bangalore",
+  siblings: {
+    sister: ["A", "B", "C"],
+    brother: ["D", "E", "F"],
+  },
+  parents: {
+    father: "Sachida",
+    mother: "Usha",
+  },
+  JobDetails: ["Accenture", "Sapient", "Wipro"],
+};
+
+function printPerson({
+  fname: first,
+  age,
+  city,
+  zip,
+  siblings: {
+    sister: [a, b],
+    brother: favBro,
+  },
+  parents: { father: FATHER, mother: MOTHER },
+  JobDetails: [firstCompany, SecondCompany],
+}) {
+  console.log(
+    "Values are",
+    first,
+    age,
+    city,
+    zip,
+    favBro,
+    FATHER,
+    MOTHER,
+    firstCompany,
+    SecondCompany,
+    a,
+    b
+  );
+}
+
+printPerson(ashutosh);
+```
+
+### New String methods
+
+- startsWith()
+- endsWith()
+- includes()
+- repeat()
+
+```javascript
+const person = "Ashutosh Shrivastava";
+const employee = "20052220-EMP-ASHUTOSH-SHRIVASTAVA";
+const manager = "20062220-MAN-SHARON-SHRIVASTAVA";
+
+// startsWith
+console.log(person.startsWith("Ash"));
+console.log(employee.startsWith("EMP", 9));
+
+//endsWith
+console.log(manager.endsWith("SHRIVASTAVA"));
+console.log(manager.endsWith("MAN", 12));
+
+//includes
+console.log(employee.includes("EMP"));
+
+//repeat
+
+const rep = (person, amount = 2) => {
+  return person.repeat(amount);
+};
+
+const res = rep(person, 3);
+console.log(res);
+```
+
+### for of
+
+- loops through the values of an iterable object.
+- String, Array,Map,Set etc---- **Not Object**
+- unlike for each we can use break , continue.
+
+```javascript
+const fruits = ["Apple", "Banana", "orange", "kiwi"];
+const longName = "Ashutosh Shrivastava aka ASHU";
+let shortName = "";
+
+for (const iterator of longName) {
+  // console.log(iterator);
+  if (iterator === " ") {
+    continue;
+  } else {
+    shortName += iterator;
+  }
+}
+console.log(shortName);
+
+for (const iterator of fruits) {
+  if (iterator === "orange") {
+    break;
+  }
+  console.log(iterator);
+}
+```
+
+### for in
+
+- loop - iterate over objects properties.
+- not advised to use it on arrays, especially if the order is important.
+- on arrays use 'for of' instead.
+
+```javascript
+const person = { fname: "ashutosh", lname: "shrivatsava", job: "developer" };
+
+// for (const iterator of person) {
+//   console.log(iterator);
+// }
+
+for (const key in person) {
+  if (Object.hasOwnProperty.call(person, key)) {
+    const element = person[key];
+    console.log(element);
+  }
+}
+
+const fruits = ["Apple", "Banana", "orange", "kiwi"];
+
+for (const index in fruits) {
+  console.log(`Index- ${index}: Value - ${fruits[index]}`);
+}
+// It's easy to use for of.
+for (const iterator of fruits) {
+  console.log(iterator);
+}
+```
+
+### Spread operator [...]
+
+- Allows an iterable to spread/expend individually inside receiver.
+- split into single items and **copy them**;
+- Doesn't mutate original item.
+- **Array example**
+
+```javascript
+const nameVal = "ASHUTOSH SHRIVASTAVA";
+
+const letters = [...nameVal];
+console.log(letters);
+
+const boys = ["Ashu", "Diwakar", "Ethan", "Karthik", "Sachida"];
+const girls = ["Sharon", "Khushboo", "Usha"];
+const random = "random";
+
+const res1 = [...boys, ...girls, random];
+console.log(res1);
+const res2 = [...boys, random, ...girls];
+console.log(res2);
+
+// don't assign as it reference same and it's mutate the array.
+//const newArray = res2;
+// instead copy them and make modification
+const newArray = [...res2];
+newArray[0] = "XYZ"; // it will affect res2 as well.
+
+console.log(newArray);
+console.log(res2);
+```
+
+- **Object Example** - ES8 - 2018.
+
+```javascript
+const person = {
+  name: "Ashutosh",
+  job: "developer",
+};
+
+/* If property is not there it will be added , if property is there it will be overridden
+ */
+const newPerson1 = { ...person };
+
+const newPerson2 = { ...person, city: "Bangalore", name: "Ethan" };
+console.log(newPerson1);
+console.log(newPerson2);
+console.log(person);
+```
+
+- **DOM Element Example**
+
+```html
+<body>
+  <h1>Item1</h1>
+  <h1>Item2</h1>
+  <h1>Item3</h1>
+  <h1>Item4</h1>
+  <h1>Item5</h1>
+  <h2 id="result"></h2>
+</body>
+```
+
+```javascript
+const h1Elements = document.querySelectorAll("h1");
+const res = document.querySelector("#result");
+const arrayValue = [...h1Elements];
+console.log(arrayValue);
+const resultText = arrayValue
+  .map((item) => {
+    return `<span>${item.textContent}</span>`;
+  })
+  .join("");
+res.innerHTML = resultText;
+```
+
+- **Function Arguments**
+  - Spread - When we are passing as an arguments.
+
+```javascript
+const number = [10, 20, 40, 50, 60];
+
+console.log(Math.max(...number));
+
+const person = ["Ashutosh", "Shrivastava"];
+
+const greet = (fname, lname) => {
+  console.log(`Hello ${fname} ${lname}`);
+};
+
+greet(...person);
+```
+
+### Rest Operator
+
+- gathers/collects the items.
+- A rest element must be last in a destructuring pattern.
+- **Array**
+
+```javascript
+// Arrays
+const fruits = ["Apple", "Orange", "Kiwi", "banana", "pear"];
+const [first, ...restFruits] = fruits;
+console.log(first, restFruits);
+```
+
+- **Object**
+
+```javascript
+// objects
+
+const person = { fname: "ashutosh", lname: "shrivatsava", job: "developer" };
+
+const { job, ...restPerson } = person;
+console.log(job, restPerson);
+```
+
+- **functions** - Collecting **parameters** while passing to the function.
+
+```javascript
+const testScores = [80, 90, 75, 100, 85];
+
+const getAvg = (name, ...scores) => {
+  //   const total = scores.reduce((acc, curr) => {
+  //     return (acc += curr);
+  //   }, 0);
+  let total = 0;
+  //   scores.forEach((item) => {
+  //     total += item;
+  //   });
+
+  for (const iterator of scores) {
+    total += iterator;
+  }
+  console.log(total);
+  console.log(`Hi ${name}, Your average score is ${total / scores.length}`);
+};
+
+getAvg(person.fname, 100, 200, 300, 400, 500);
+
+getAvg("Sharon", ...testScores); // Using spred operator as argument
+```
+
+### Array.from and Array.of
+
+- Not on the Prototype.
+- Array.of - create new Array instance from variable number of arguments
+- Array from - returns Array object from any object with a ling property or an iterable object.
+- Array from - turn array-like/ish in to array -string ,nodeList,Set
+- You can call **map function** as callback in Array.from
+
+```javascript
+const testArray = Array.of("Ashu", 31, true);
+console.log(testArray);
+```
+
+```javascript
+const nameVal = "Ashutosh";
+console.log(Array.from(nameVal));
+
+function countTotal() {
+  //arguments is a keyword.
+  //console.log(arguments);
+  let arrayVal = Array.from(arguments);
+  console.log(arrayVal);
+  let total = 0;
+  for (const iterator of arrayVal) {
+    total += iterator;
+  }
+  console.log(total);
+}
+
+countTotal(10, 20, 30, 40, 50);
+```
+
+```javascript
+const h1Elements = document.querySelectorAll("h1");
+const res = document.querySelector("#result");
+const second = document.querySelector("#second");
+const arrayValue = Array.from(h1Elements);
+console.log(arrayValue);
+//longer approach
+const resultText = arrayValue
+  .map((item) => {
+    return `<span>${item.textContent}</span>`;
+  })
+  .join("");
+res.innerHTML = resultText;
+//shorter approach
+const secondTextVal = Array.from(document.querySelectorAll("h1"), (item) => {
+  //console.log(item);
+  return `<span>${item.textContent}</span>`;
+}).join("");
+
+console.log(secondTextVal);
+second.innerHTML = secondTextVal;
+```
+
+### find,findIndex,every,some
+
+- find - get specific item.
+- findIndex- get's index of the item.
+- every - return true/false if all the items in array matched the condition.
+- some- return true/false if atleast one items in array matched the condition.
+
+```javascript
+const people = [
+  { id: 1, name: "ashutosh" },
+  { id: 2, name: "sharon" },
+  { id: 3, name: "ethan" },
+  { id: 4, name: "samual" },
+];
+
+// filter return an array object.
+const testFilter = people.filter((item) => item.name.startsWith("s"));
+
+console.log(testFilter); // two items return sharon and samual.
+
+// return single item which is matched first .
+const testFind = people.find((item) => item.name.startsWith("s"));
+console.log(testFind); // sharon object return.
+
+const testFindIndex = people.findIndex((item) => item.id === 3);
+console.log(testFindIndex);
+
+const newPeople = people.slice(0, testFindIndex);
+console.log(newPeople);
+```
+
+```javascript
+const grades = ["A", "B", "A", "B", "C"];
+const goodGrades = ["A", "B", "A", "B"];
+
+const testEvery = grades.every((item) => item !== "C");
+console.log(testEvery);
+
+const testSome = goodGrades.some((item) => item === "A");
+console.log(testSome);
+```
+
+### Convert objects into arrays
+
+**Object.keys()** - converts property names in to array.
+**Object.values()** - converts property values in to array.
+**Object.entries()** - converts property names and property values in to array
+
+```javascript
+const person = { fname: "ashutosh", lname: "shrivatsava", job: "developer" };
+
+const keysArray = Object.keys(person);
+console.log(keysArray);
+```
+
+```javascript
+const person = { fname: "ashutosh", lname: "shrivatsava", job: "developer" };
+const valuesArray = Object.values(person);
+console.log(valuesArray);
+```
+
+```javascript
+const person = { fname: "ashutosh", lname: "shrivatsava", job: "developer" };
+const entriesArray = Object.entries(person);
+console.log(entriesArray);
+
+// map method.
+const mapRes = entriesArray.map((item) => {
+  const [first, second] = item;
+  //return first; // return keys in array.
+  return second; // return values in array.
+});
+
+console.log(mapRes);
+
+// nested for of.
+
+for (const item of entriesArray) {
+  for (const iterator of item) {
+    console.log(iterator);
+  }
+}
+
+// using destructing --  for of.
+for (const [first, second] of entriesArray) {
+  console.log(first, second);
+}
+```
+
+### Set Object
+
+- stores a collection of unique values of anytype.
+
+```javascript
+const unique = new Set();
+
+// add(values)
+
+let random = "third";
+unique.add("first");
+unique.add("second");
+unique.add(random);
+unique.add("fourth");
+console.log(unique);
+// create array using Array from , we can use spread operator as well..
+console.log(Array.from(unique));
+console.log([...unique]);
+// delete
+const res = unique.delete(random);
+console.log(res); // true
+console.log(unique);
+
+const isValue = unique.has("fourth");
+console.log(isValue); // true
+
+//Iterator
+
+//entries()
+
+console.log(unique.entries());
+console.log(unique.keys());
+console.log(unique.values());
+unique.forEach((element) => {
+  console.log(element);
+});
+
+// clear()
+const res2 = unique.clear();
+console.log(res2);
+```
+
+- **set usecase**
+
+```javascript
+const menu = [
+  {
+    id: 1,
+    title: "buttermilk pancakes",
+    category: "breakfast",
+  },
+  {
+    id: 2,
+    title: "diner double",
+    category: "lunch",
+  },
+  {
+    id: 3,
+    title: "godzilla milkshake",
+    category: "shakes",
+  },
+  {
+    id: 4,
+    title: "country delight",
+    category: "breakfast",
+  },
+  {
+    id: 5,
+    title: "egg attack",
+    category: "lunch",
+  },
+  {
+    id: 6,
+    title: "oreo dream",
+    category: "shakes",
+  },
+  {
+    id: 7,
+    title: "bacon overflow",
+    category: "breakfast",
+  },
+  {
+    id: 8,
+    title: "american classic",
+    category: "lunch",
+  },
+  {
+    id: 9,
+    title: "quarantine buddy",
+    category: "shakes",
+  },
+  {
+    id: 10,
+    title: "pan-seared steak",
+    category: "dinner",
+  },
+];
+
+// const categories = menu.map((item) => item.category);
+// console.log(categories);
+
+// const uniqueCategories = new Set(categories);
+// console.log(uniqueCategories);
+
+// const finalCategories = ["all", ...uniqueCategories];
+// console.log(finalCategories);
+
+const res = ["all", ...new Set(menu.map((item) => item.category))];
+console.log(res); // ['all', 'breakfast', 'lunch', 'shakes', 'dinner']
+```
+
+### String includes
+
+- case sensitive.
+
+```javascript
+const fName = "Ashutosh";
+const res1 = fName.includes("A");
+const res2 = fName.includes("A", 1); // staring postion to check.
+console.log(res1); //true
+console.log(res2); //false
+
+const product = [
+  { title: "Modern Poster" },
+  { title: "Bar Stool" },
+  { title: "Armchair" },
+  { title: "Leather Chair" },
+];
+
+const searchTerm = "a";
+
+const result = product.filter((product) =>
+  product.title.toLowerCase().includes(searchTerm)
+);
+console.log(result);
+```
+
+### Array includes()
+
+- checks if the items is in array.
+- useful in the conditional statment.
+
+```javascript
+const groceries = ["lemon", "eggs", "orange", "milk"];
+
+let searchText = "lemon";
+
+const res1 = groceries.includes(searchText);
+console.log(res1); // true
+
+const res2 = groceries.includes(searchText, 1);
+console.log(res2); // false
+
+if (groceries.includes(searchText)) {
+  console.log(`Yes the search item ${searchText} is present in an array`);
+} else {
+  console.log(`No the search item ${searchText} is not present in an array`);
+}
 ```

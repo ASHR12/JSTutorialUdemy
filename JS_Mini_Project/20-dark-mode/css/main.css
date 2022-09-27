@@ -41,7 +41,8 @@ html {
   --grey-700: #334155;
   --grey-800: #1e293b;
   --grey-900: #0f172a;
-
+  --clr-primary: var(--primary-500);
+  --clr-grey: var(--grey-500);
   --black: #222;
   --white: #fff;
   --red-light: #f8d7da;
@@ -59,6 +60,13 @@ html {
   --shadow2: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow3: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow4: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark-theme {
+  --backgroundColor: var(--grey-800);
+  --textColor: var(--white);
+  --clr-primary: var(--primary-200);
+  --clr-grey: var(--grey-200);
 }
 
 body {
@@ -194,7 +202,6 @@ ul {
   margin-bottom: 1rem;
   border: transparent;
   border-radius: var(--borderRadius);
-  text-transform: capitalize;
 }
 .alert-danger {
   color: var(--red-dark);
@@ -241,7 +248,11 @@ ul {
   font-family: inherit;
   color: var(--grey-400);
 }
-
+.form-alert {
+  color: var(--red-dark);
+  letter-spacing: var(--letterSpacing);
+  text-transform: capitalize;
+}
 /* loading */
 @keyframes spinner {
   to {
@@ -270,8 +281,6 @@ ul {
   margin: 0 auto;
 }
 
-/* Dark mode button example */
-
 .darkModeToggleBtn {
   position: relative;
   display: inline-block;
@@ -283,7 +292,13 @@ ul {
 .darkModeLabel {
   width: 4rem;
   height: 2rem;
-  background-color: black;
+  /* background-color: black; */
+  background: rgb(20, 7, 41);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 7, 41, 1) 0%,
+    rgba(133, 78, 214, 1) 100%
+  );
   display: flex;
   flex-wrap: wrap;
   border-radius: 50px;
@@ -291,11 +306,18 @@ ul {
   justify-content: space-between;
   padding: 0.5rem;
   position: relative;
+  cursor: pointer;
 }
 .ball {
   width: 30px;
   height: 30px;
-  background-color: white;
+  /* background-color: white; */
+  background: rgb(20, 7, 41);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 7, 41, 1) 0%,
+    rgba(133, 78, 214, 1) 100%
+  );
   position: absolute;
   top: 1px;
   left: 1px;
@@ -303,6 +325,7 @@ ul {
   transition: transform 0.2s linear;
 }
 
+/*  target the elemenent after the label*/
 .darkModeCheckbox:checked + .darkModeLabel .ball {
   transform: translateX(32px);
 }
@@ -313,4 +336,42 @@ ul {
 
 .fa-sun {
   color: #f39c12;
+}
+
+/* Dark-Mode project start*/
+.section-center {
+  max-width: var(--fixed-width);
+}
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  align-items: center;
+}
+.nav-logo-text {
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+.articles {
+  display: grid;
+  gap: 3rem;
+}
+.post {
+  display: grid;
+}
+
+.post h2,
+p {
+  margin-bottom: 0;
+}
+
+.post h2 {
+  color: var(--clr-primary);
+}
+
+.post-info {
+  color: var(--clr-grey);
+  font-style: italic;
+  margin-bottom: 10px;
 }

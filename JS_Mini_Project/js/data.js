@@ -94,4 +94,14 @@ const projects = [
     title: "Numbers",
     link: "19-numbers",
   },
+  {
+    id: 20,
+    title: "Dark Mode",
+    link: "20-dark-mode",
+  },
+  {
+    id: 21,
+    title: "Filter",
+    link: "21-filter",
+  },
 ];

@@ -9,15 +9,21 @@ const displayButton = () => {
 
   const buttonListHTML = uniqueCompanies
     .map((item) => {
-      return `
+      if (item === "all") {
+        return `
+      <button class="company-btn active" data-id="${item}">
+        ${item}
+      </button>`;
+      } else {
+        return `
       <button class="company-btn" data-id="${item}">
         ${item}
       </button>`;
+      }
     })
     .join("");
   companiesButtonList.innerHTML = buttonListHTML;
   const companiesBtnList = [...document.querySelectorAll(".company-btn")];
-  console.log(companiesBtnList);
   companiesBtnList.forEach((btn) => {
     btn.addEventListener("click", function () {
       companiesBtnList.forEach((item) => {

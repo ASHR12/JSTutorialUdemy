@@ -50,6 +50,8 @@
     - [Set Object](#set-object)
     - [String includes](#string-includes)
     - [Array includes()](#array-includes)
+    - [Modules - ES6](#modules---es6)
+  - [Asynchronous Javascript](#asynchronous-javascript)
 
 ## Javascript Basics
 
@@ -2340,5 +2342,224 @@ if (groceries.includes(searchText)) {
   console.log(`Yes the search item ${searchText} is present in an array`);
 } else {
   console.log(`No the search item ${searchText} is not present in an array`);
+}
+```
+
+### Modules - ES6
+
+- Provide structure.
+- Split code in to smaller files.
+- Share code Accross App.
+- Same as React.
+- Use Server Extension Locally.
+- used in Projects.
+- **doesn't work with local file system**
+- Types
+  - named export **names need to match** - export const random = "Random Value";
+  - default export - **name doesn't need to match** and **only one defalut export per file** export default functionName;
+  - other flavor- export default ()=>{}
+
+## Asynchronous Javascript
+
+- Javascript is single thread ,synchronous language.
+- run code line by line. if it's takes time to get response it will block the code execution.
+- Asyncronous code will take the function out of normal flow and return the result later once task is done without stopping next line of code. (setTimeout)
+- BROWSER- Fetch Data, Get Geolocation, setTimeout, setTimer
+- **callbacks,callback hell**
+- **promise**
+  - when promise is created it will always be in pending state unless it resolved or rejected.
+  - in chained promise if one fails the next one will not execute.
+- **async/await**
+
+  - before we can use await we must have async keyword in front of function.
+  - await can only be used on function which returns promise.
+  - await waits till promise is settled.
+  - error handling try and catch.
+  - if first await fails then next await's won't work as it will be catched.
+  - async function doesn't need to be promise.
+  - if async is added in front of function then it will always wrap return in **promise**
+
+- **callbacks**
+
+```javascript
+console.log("i am first");
+console.log("i am second");
+console.log("i am third");
+printCount();
+console.log("i am fourth");
+
+function printCount() {
+  console.log("Counting start");
+  for (let i = 0; i <= 10000; i++) {
+    console.log("Counting");
+  }
+  console.log("Counting end");
+}
+```
+
+```javascript
+console.log("i am first");
+console.log("i am second");
+console.log("i am third");
+printCount(6000);
+console.log("i am fourth");
+
+function printCount(time) {
+  console.log("Counting start");
+  setTimeout(() => {
+    console.log("counting done");
+  }, time);
+}
+```
+
+```javascript
+// Time passed in setTimeout is minimum time not exact time.
+printCount(0);
+console.log("continue with next line");
+// once for loop finished then only callback function of settimeout can be executed.
+for (let index = 0; index < 1000; index++) {
+  console.log("Running For loop");
+}
+function printCount(time) {
+  console.log("Counting start");
+  setTimeout(() => {
+    console.log("counting done");
+  }, time);
+}
+```
+
+- **callback hell**
+
+```javascript
+// Make Soup
+// boil water 10 min
+// chop carrots
+// add carrots boil for 5 min
+// chop onion
+// add onion boil for 5 min
+// BROWSER!!!!! Fetch Data, Get Geolocation, setTimeout, setTimer etc
+// callbacks, promises, async/await
+
+boilWater();
+console.log(`chop carrot`);
+
+function boilWater() {
+  console.log("boiling started...");
+  setTimeout(() => {
+    console.log("boiling for 10 min is done.");
+    console.log("add carrots and let it boil for 5 min.");
+    setTimeout(() => {
+      console.log("carrots boiled for 5 min and it's ready");
+      console.log("add onions and and let it boil for 5 min.");
+      setTimeout(() => {
+        console.log("onion boiled for 5 min and it's ready");
+      }, 5000);
+    }, 5000);
+    console.log("chop onion");
+  }, 10000);
+}
+```
+
+```html
+<h1>Asynchronous Javascript</h1>
+<h1 class="one">hello world</h1>
+<h1 class="two">hello people</h1>
+<h1 class="three">hello Javascript</h1>
+<button class="btn">click me</button>
+<script src="./app.js"></script>
+```
+
+```javascript
+const heading1 = document.querySelector(".one");
+const heading2 = document.querySelector(".two");
+const heading3 = document.querySelector(".three");
+
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("click", () => {
+  setTimeout(() => {
+    heading1.style.color = "red";
+    setTimeout(() => {
+      heading2.style.color = "green";
+      setTimeout(() => {
+        heading3.style.color = "blue";
+      }, 1000);
+    }, 2000);
+  }, 1000);
+});
+```
+
+- **promise**
+
+```javascript
+const heading1 = document.querySelector(".one");
+const heading2 = document.querySelector(".two");
+const heading3 = document.querySelector(".three");
+
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("click", () => {
+  changeColor(heading1, "red", 1000)
+    .then(() => changeColor(heading2, "green", 2000))
+    .then(() => changeColor(heading3, "blue", 1000))
+    .catch((err) => console.log(err));
+});
+
+function changeColor(element, color, time) {
+  return new Promise((resolve, reject) => {
+    if (element) {
+      setTimeout(() => {
+        element.style.color = color;
+        resolve();
+      }, time);
+    } else {
+      reject(new Error(`There is no such element :${element} `));
+    }
+  });
+}
+```
+
+- **async/await**
+
+```javascript
+const heading1 = document.querySelector(".one");
+const heading2 = document.querySelector(".two");
+const heading3 = document.querySelector(".three");
+
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("click", async () => {
+  // directly calling as promise.
+  // displayColor().then((res) => console.log(res));
+
+  // using await as we have async as function.
+  const res = await displayColor();
+  console.log(res);
+});
+
+async function displayColor() {
+  try {
+    await changeColor(heading1, "red", 3000);
+    await changeColor(heading2, "green", 4000);
+    await changeColor(heading3, "blue", 5000);
+    console.log("Code executed after all promise is settled");
+  } catch (error) {
+    console.log(error);
+  }
+  return " returning promise";
+}
+
+function changeColor(element, color, time) {
+  console.log(element, color, time);
+  return new Promise((resolve, reject) => {
+    if (element) {
+      setTimeout(() => {
+        element.style.color = color;
+        resolve();
+      }, time);
+    } else {
+      reject(new Error(`There is no such element :${element} `));
+    }
+  });
 }
 ```

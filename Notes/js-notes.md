@@ -52,6 +52,7 @@
     - [Array includes()](#array-includes)
     - [Modules - ES6](#modules---es6)
   - [Asynchronous Javascript](#asynchronous-javascript)
+  - [AJAX- Asynchronous Javascript and XML](#ajax--asynchronous-javascript-and-xml)
 
 ## Javascript Basics
 
@@ -2562,4 +2563,163 @@ function changeColor(element, color, time) {
     }
   });
 }
+```
+
+## AJAX- Asynchronous Javascript and XML
+
+- HTTP Request - Connection between client and server.
+- API - Application Programming Interface.
+- AJAX -
+
+  - XHR - Built in.
+  - Fetch - Built in.
+
+    - promised based.
+    - latest,simpler and clearner syntax.
+    - fetch return response promise which has json function which return promise , so to get data we need to chain .then().then() twice.
+    - fetch only treat network error as errors. so if we have 404 , we still have response. but response.json() will not be a valid call and it will thorw Syntax error in console.
+
+  - **XHR**
+
+```javascript
+const contentContainer = document.querySelector(".content-container");
+const btn = document.querySelector(".btn");
+const url = "./api/data.json";
+const getData = () => {
+  const xhr = new XMLHttpRequest();
+  //console.log(xhr); // ready state =0
+  xhr.open("GET", url, true);
+  //console.log(xhr); // ready state = 1
+  xhr.onreadystatechange = () => {
+    //console.log(xhr); // ready state =2 ,3, 4
+    //console.log(xhr.status);
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const data = JSON.parse(xhr.responseText);
+      console.log(typeof data);
+      // console.log({ data: xhr.responseText });
+      // contentContainer.textContent = xhr.responseText;
+      const dataElement = document.createElement("div");
+      const displayData = data
+        .map((item) => {
+          return `<ul>
+      <li>${item.company}</li>
+      <ul>
+        <li>${item.title}</li>
+        <li>${item.id}</li>
+      </ul>
+    </ul>`;
+        })
+        .join("");
+      dataElement.innerHTML = displayData;
+      document.body.appendChild(dataElement);
+    } else {
+      // console.log({
+      //   readyState: xhr.readyState,
+      //   status: xhr.status,
+      //   text: xhr.statusText,
+      // });
+    }
+  };
+  xhr.send();
+};
+
+btn.addEventListener("click", () => {
+  getData();
+});
+
+console.log(`Will Execute First`);
+```
+
+- **FETCH Code example**
+
+```javascript
+const url = "./api/data.json";
+
+fetch(url)
+  .then((res) => {
+    // response object
+    // useful props and method
+    // console.log(res.json()); - return promise so we need to use another then(()=>)
+    // convert response in to JSON data.
+    //return promise.
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+```
+
+```javascript
+// Implicit return.
+const url = "./api/data.json";
+
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+```
+
+```javascript
+const url = "./api/data.json";
+const contentContainer = document.querySelector(".content-container");
+const btn = document.querySelector(".btn");
+
+const prepareData = (data) => {
+  return data
+    .map((item) => {
+      const { company, title, id } = item;
+      return `<ul>
+      <li>${company}</li>
+      <ul>
+        <li>${title}</li>
+        <li>${id}</li>
+      </ul>
+    </ul>`;
+    })
+    .join("");
+};
+
+btn.addEventListener("click", () => {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      const result = prepareData(data);
+      console.log(result);
+      contentContainer.innerHTML = result;
+    })
+    .catch((err) => console.log(err));
+});
+```
+
+```javascript
+// Using async and await
+const url = "./api/data.jsons";
+const contentContainer = document.querySelector(".content-container");
+const btn = document.querySelector(".btn");
+
+const prepareData = (data) => {
+  return data
+    .map((item) => {
+      const { company, title, id } = item;
+      return `<ul>
+      <li>${company}</li>
+      <ul>
+        <li>${title}</li>
+        <li>${id}</li>
+      </ul>
+    </ul>`;
+    })
+    .join("");
+};
+
+btn.addEventListener("click", async () => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const result = prepareData(data);
+    contentContainer.innerHTML = result;
+  } catch (error) {
+    console.log(error);
+  }
+});
 ```

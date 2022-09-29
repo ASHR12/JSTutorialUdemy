@@ -104,4 +104,9 @@ const projects = [
     title: "Filter",
     link: "21-filter",
   },
+  {
+    id: 22,
+    title: "Dad's Joke",
+    link: "22-dadjokes",
+  },
 ];

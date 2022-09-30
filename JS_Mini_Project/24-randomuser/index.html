@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Person</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body class="main-background">
+    <div class="section-center user-card-section">
+      <section class="content-container">
+        <img
+          class="img profileImg"
+          src="https://randomuser.me/api/portraits/men/17.jpg"
+          alt=""
+        />
+        <p class="icon-title">My Name is</p>
+        <p class="icon-value">Jimi Hautala</p>
+        <div class="icon-list">
+          <button class="icon" data-label="fullName">
+            <i class="fa-regular fa-user fa-fw"></i>
+          </button>
+
+          <button class="icon" data-label="email">
+            <i class="fa-regular fa-envelope-open fa-fw"></i>
+          </button>
+
+          <button class="icon" data-label="age">
+            <i class="fa-regular fa-calendar-xmark fa-fw"></i>
+          </button>
+
+          <button class="icon" data-label="address">
+            <i class="fa-regular fa-map fa-fw"></i>
+          </button>
+
+          <button class="icon" data-label="phone">
+            <i class="fa-solid fa-mobile-screen-button fa-fw"></i>
+          </button>
+
+          <button class="icon" data-label="password">
+            <i class="fa-solid fa-user-secret fa-fw"></i>
+          </button>
+        </div>
+        <button class="btn random-user-btn">random user</button>
+      </section>
+    </div>
+  </body>
+  <script type="module" src="./js/main.js"></script>
+</html>

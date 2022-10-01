@@ -119,4 +119,9 @@ const projects = [
     title: "Random user",
     link: "24-randomuser",
   },
+  {
+    id: 25,
+    title: "Cocktail",
+    link: "25-cocktails",
+  },
 ];

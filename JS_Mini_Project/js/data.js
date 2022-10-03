@@ -124,4 +124,14 @@ const projects = [
     title: "Cocktail",
     link: "25-cocktails",
   },
+  {
+    id: 26,
+    title: "ES6-Slider",
+    link: "26-ES6-Slider",
+  },
+  {
+    id: 27,
+    title: "Ashu-PAY",
+    link: "27-ashu-pay",
+  },
 ];

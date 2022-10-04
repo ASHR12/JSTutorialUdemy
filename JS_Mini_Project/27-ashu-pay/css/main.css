@@ -361,6 +361,8 @@ nav.fixed {
 /* Banner start */
 .hero-banner {
   min-height: 100vh;
+  max-height: -webkit-fill-available;
+  /* min-height: 100%; */
   display: grid;
   place-items: center;
   /* border-bottom: 0.5px solid var(--grey-500); */

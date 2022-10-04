@@ -134,4 +134,9 @@ const projects = [
     title: "Ashu-PAY",
     link: "27-ashu-pay",
   },
+  {
+    id: 28,
+    title: "Pagination",
+    link: "28-pagination",
+  },
 ];

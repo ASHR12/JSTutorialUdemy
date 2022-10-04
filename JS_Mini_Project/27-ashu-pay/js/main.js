@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const sideBarLinks = getElement(".sidebar-links");
   const heroBanner = getElement(".hero-banner");
   const subMenu = getElement(".submenu");
+  heroBanner.style.minHeight = window.innerHeight + "px";
   // setup side bar on page load .
   setSideBar(sideBarLinks);
   setHeroEventListener(heroBanner, subMenu);

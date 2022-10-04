@@ -360,7 +360,7 @@ nav.fixed {
 
 /* Banner start */
 .hero-banner {
-  min-height: 100vh;
+  /* min-height: 625px; */
   display: grid;
   place-items: center;
   /* border-bottom: 0.5px solid var(--grey-500); */

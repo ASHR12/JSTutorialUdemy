@@ -13,16 +13,11 @@ let url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=1
 let numberOfPages = 0;
 let numberOfButtonsPerPage = 10;
 
-const setupUI = (data) => {
-  // if (window.innerWidth < 576) {
-  //   numberOfButtonsPerPage = 5;
-  // } else {
-  //   numberOfButtonsPerPage = 10;
-  // }
+const setupUI = async (data) => {
   numberOfPages = Math.ceil(
     data.query.searchinfo.totalhits / numberOfResultPerPage
   );
-  displayPages(data, wikiResultsContainer);
+  await displayPages(data, wikiResultsContainer);
   displayButtons(
     btnContainer,
     [...Array(numberOfPages).keys()],

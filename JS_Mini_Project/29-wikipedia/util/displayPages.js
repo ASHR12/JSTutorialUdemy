@@ -1,4 +1,4 @@
-const displayPages = (data, wikiResultsContainer) => {
+const displayPages = async (data, wikiResultsContainer) => {
   const errorElement = document.createElement("div");
   errorElement.innerHTML = `<p class="alert alert-danger">No Search input provided.</p>`;
   const filteredData = data.query.search;

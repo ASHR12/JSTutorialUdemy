@@ -139,4 +139,9 @@ const projects = [
     title: "Pagination",
     link: "28-pagination",
   },
+  {
+    id: 29,
+    title: "Wikipedia",
+    link: "29-wikipedia",
+  },
 ];

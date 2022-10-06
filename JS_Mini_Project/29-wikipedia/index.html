@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wikipedia</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body class="wikipedia section-center">
+    <div class="search-container">
+      <img class="img wiki-logo" src="./images/wiki-logo.png" alt="" />
+      <div class="title">
+        <h2>search wikipedia</h2>
+      </div>
+      <form class="form">
+        <div class="form-row">
+          <input
+            type="text"
+            id="search-input"
+            name="search-input"
+            class="form-input"
+          />
+          <button type="submit" class="btn submit-btn">submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="network-info"></div>
+    <div class="wiki-results-container">
+      <!-- <a class="result-card" href="">
+        <article>
+          <h4 class="result-title">Title</h4>
+          <p class="result-short-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit saepe
+            amet eius vel reprehenderit, ratione numquam tempora similique sequi
+            laboriosam cupiditate, nisi accusantium adipisci! Laboriosam quae
+            dolores dicta recusandae corporis!
+          </p>
+        </article>
+      </a> -->
+    </div>
+    <div class="search-info"></div>
+    <section class="btn-container">
+      <!-- <button class="prev-btn pagination-btn">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="data-btn active-btn" data-sroffset="18">1</button>
+      <button class="data-btn" data-sroffset="36">2</button>
+      <button class="next-btn pagination-btn">
+        <i class="fa-solid fa-angle-right"></i>
+      </button> -->
+    </section>
+  </body>
+  <script type="module" src="./js/main.js"></script>
+</html>

@@ -1,22 +1,18 @@
-const range = (count, pages) => {
+const range = (count, pages, numberOfButtonsPerPage) => {
   let start = 0;
-  let end = 10;
+  let end = numberOfButtonsPerPage;
   if (count === 0) {
     return { start, end };
   }
-  // if (count <= pages.length) {
-  //   start = count;
-  //   end = start + 10;
-  // }
-  if (pages.length - 1 - count < 10) {
+  if (pages.length - 1 - count < numberOfButtonsPerPage) {
     let diff = pages.length - 1 - count;
     console.log("inside this");
-    start = count - (10 - diff);
+    start = count - (numberOfButtonsPerPage - diff);
     end = pages.length;
     console.log(start, end);
   } else {
     start = count;
-    end = start + 10;
+    end = start + numberOfButtonsPerPage;
   }
   return { start, end };
 };
@@ -24,12 +20,13 @@ const displayButtons = (
   btnContainer,
   pages,
   numberOfResultPerPage,
-  sroffset
+  sroffset,
+  numberOfButtonsPerPage
 ) => {
   console.log(`display buttons`);
   let count = Math.ceil(sroffset / numberOfResultPerPage);
   console.log(count);
-  const { start, end } = range(count, pages);
+  const { start, end } = range(count, pages, numberOfButtonsPerPage);
   // console.log(start, end);
   let btnsHTML = pages
     .map((_, i) => {

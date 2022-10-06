@@ -11,7 +11,14 @@ let sroffset = 0;
 let inputValue;
 let url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=15&sroffset=${sroffset}&format=json&origin=*&srsearch=`;
 let numberOfPages = 0;
+let numberOfButtonsPerPage = 10;
+
 const setupUI = (data) => {
+  // if (window.innerWidth < 576) {
+  //   numberOfButtonsPerPage = 5;
+  // } else {
+  //   numberOfButtonsPerPage = 10;
+  // }
   numberOfPages = Math.ceil(
     data.query.searchinfo.totalhits / numberOfResultPerPage
   );
@@ -20,7 +27,8 @@ const setupUI = (data) => {
     btnContainer,
     [...Array(numberOfPages).keys()],
     numberOfResultPerPage,
-    sroffset
+    sroffset,
+    numberOfButtonsPerPage
   );
 };
 
@@ -76,5 +84,3 @@ btnContainer.addEventListener("click", async function (e) {
     setupUI(data);
   }
 });
-
-const pageRange = () => {};

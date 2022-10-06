@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashu-E-Store</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-center section-center">
+        <!-- links -->
+        <div>
+          <button class="toggle-nav">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <ul class="nav-links">
+            <li>
+              <a href="index.html" class="nav-link"> home </a>
+            </li>
+            <li>
+              <a href="products.html" class="nav-link"> products </a>
+            </li>
+            <li>
+              <a href="about.html" class="nav-link"> about </a>
+            </li>
+          </ul>
+        </div>
+        <!-- logo -->
+        <img src="./images/Ashu-E-Store.svg" class="nav-logo img" alt="logo" />
+        <!-- cart icon -->
+        <div class="cart-and-mode">
+          <div class="toggle-container">
+            <button class="toggle-cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <span class="cart-item-count">0</span>
+          </div>
+          <div class="darkModeToggleBtn">
+            <input type="checkbox" class="darkModeCheckbox" id="checkbox" />
+            <label for="checkbox" class="darkModeLabel">
+              <i class="fa-solid fa-moon"></i>
+              <i class="fa-solid fa-sun"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-wrapper">
+      <aside class="sidebar">
+        <button class="close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- links -->
+        <div class="sidebar-links">
+          <a href="index.html"><i class="fa-solid fa-house fa-fw"></i>home</a>
+          <a href="products.html"
+            ><i class="fa-solid fa-couch fa-fw"></i>products</a
+          >
+          <a href="about.html"><i class="fa-solid fa-book fa-fw"></i>about</a>
+        </div>
+      </aside>
+    </div>
+    <section class="hero">
+      <div class="hero-container section-center">
+        <h1 class="text-slanted">rest, relax, unwind</h1>
+        <h3>embrace your choices - we do</h3>
+        <a href="products.html" class="hero-btn"> show now </a>
+      </div>
+    </section>
+  </body>
+  <script type="module" src="./js/main.js"></script>
+</html>

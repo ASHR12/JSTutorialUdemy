@@ -144,4 +144,9 @@ const projects = [
     title: "Wikipedia",
     link: "29-wikipedia",
   },
+  {
+    id: 30,
+    title: "Ashu-E-Store",
+    link: "30-Ashu-E-Store",
+  },
 ];

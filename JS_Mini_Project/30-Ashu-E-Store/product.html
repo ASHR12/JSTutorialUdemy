@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashu-E-Store</title>
+    <title>Product</title>
     <!-- normalize -->
     <link rel="stylesheet" href="./css/normalize.css" />
     <!-- font-awesome -->
@@ -20,7 +20,7 @@
   </head>
   <body>
     <!-- Nav start -->
-    <nav class="navbar">
+    <nav class="navbar page">
       <div class="nav-center section-center">
         <!-- links -->
         <div>
@@ -40,11 +40,7 @@
           </ul>
         </div>
         <!-- logo -->
-        <img
-          src="./images/white-logo.svg"
-          class="nav-logo img hompage-logo"
-          alt="logo"
-        />
+        <img src="./images/dark-logo.svg" class="nav-logo img" alt="logo" />
         <!-- cart icon -->
         <div class="cart-and-mode">
           <div class="toggle-container">
@@ -132,106 +128,44 @@
       </aside>
     </div>
     <!-- cart end -->
-    <!-- Hero Start -->
-    <section class="hero">
-      <div class="hero-container section-center">
-        <h1 class="text-slanted">rest, relax, unwind</h1>
-        <h3>embrace your choices - we do</h3>
-        <a href="products.html" class="hero-btn"> show now </a>
+    <!-- Page hero start -->
+    <section class="page-hero">
+      <div class="section-center">
+        <h5 class="page-hero-title">Home / Product Name</h5>
       </div>
     </section>
-    <!-- Hero End -->
-    <!-- featured start -->
-    <section class="featured">
-      <div class="title">
-        <h2>Featured</h2>
-        <div class="title-underline"></div>
-      </div>
-      <section class="featured-container section-center">
+    <!-- Page hero end -->
+    <main class="products-detail-page">
+      <section class="product-details-container section-center">
         <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
+          <figure>
+            <img
+              src="https://dl.airtable.com/.attachments/14ac9e946e1a02eb9ce7d632c83f742f/4fd98e64/product-1.jpeg"
+              alt="high-back bench"
+              class="img product-img"
+            />
+          </figure>
+          <figcaption class="product-info">
+            <p class="name">high-back bench</p>
+            <p class="brand text-slanted">By ikea</p>
+            <p class="price">$9.99</p>
+            <div class="colors">
+              <span class="product-colors" style="background: #f15025"></span
+              ><span class="product-colors" style="background: #222"></span>
             </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
+            <p class="product-description">
+              Cloud bread VHS hell of banjo bicycle rights jianbing umami
+              mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr
+              dreamcatcher waistcoat, authentic chillwave trust fund. Viral
+              typewriter fingerstache pinterest pork belly narwhal. Schlitz
+              venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki
+              trust fund hashtag kinfolk microdosing gochujang live-edge
+            </p>
+            <button class="btn add-Cart">Add to Cart</button>
           </figcaption>
         </article>
       </section>
-      <a href="./products.html"
-        ><button class="btn all-prod-btn">All Products</button></a
-      >
-    </section>
-    <!-- featured end -->
+    </main>
   </body>
   <script type="module" src="./js/main.js"></script>
 </html>

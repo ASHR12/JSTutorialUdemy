@@ -6,16 +6,28 @@ import {
 document.addEventListener("DOMContentLoaded", function () {
   darkThemeEventListener();
   setThemeCurrentStatus();
-  const heroDOM = getElement(".hero");
+  if (!document.querySelector(".page")) {
+    const heroDOM = getElement(".hero");
+    heroDOM.style.minHeight = window.innerHeight + "px";
+  }
   const navToggle = getElement(".toggle-nav");
-  const closeBtn = getElement(".close-btn");
   const sideBarWrapper = getElement(".sidebar-wrapper");
-  heroDOM.style.minHeight = window.innerHeight + "px";
+  const closeBtn = getElement(".close-btn");
+  const cartCloseBtn = getElement(".cart-close-btn");
+  const cartToggle = getElement(".toggle-cart");
+  const cardWrapper = getElement(".cart-wrapper");
 
   navToggle.addEventListener("click", () => {
     sideBarWrapper.classList.add("show");
   });
   closeBtn.addEventListener("click", () => {
     sideBarWrapper.classList.remove("show");
+  });
+  cartToggle.addEventListener("click", () => {
+    cardWrapper.classList.add("show");
+  });
+  cartCloseBtn.addEventListener("click", () => {
+    console.log("clicked");
+    cardWrapper.classList.remove("show");
   });
 });

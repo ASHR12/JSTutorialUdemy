@@ -1,33 +1,33 @@
-import { getElement } from "../util/element.js";
-import {
-  darkThemeEventListener,
-  setThemeCurrentStatus,
-} from "../util/darktheme.js";
-document.addEventListener("DOMContentLoaded", function () {
-  darkThemeEventListener();
-  setThemeCurrentStatus();
-  if (!document.querySelector(".page")) {
-    const heroDOM = getElement(".hero");
-    heroDOM.style.minHeight = window.innerHeight + "px";
-  }
-  const navToggle = getElement(".toggle-nav");
-  const sideBarWrapper = getElement(".sidebar-wrapper");
-  const closeBtn = getElement(".close-btn");
-  const cartCloseBtn = getElement(".cart-close-btn");
-  const cartToggle = getElement(".toggle-cart");
-  const cardWrapper = getElement(".cart-wrapper");
+// Global imports.
+import "../util/toggleSidebar.js";
+import "../util/cart/toggleCart.js";
+import "../util/darktheme.js";
 
-  navToggle.addEventListener("click", () => {
-    sideBarWrapper.classList.add("show");
-  });
-  closeBtn.addEventListener("click", () => {
-    sideBarWrapper.classList.remove("show");
-  });
-  cartToggle.addEventListener("click", () => {
-    cardWrapper.classList.add("show");
-  });
-  cartCloseBtn.addEventListener("click", () => {
-    console.log("clicked");
-    cardWrapper.classList.remove("show");
-  });
+//specific imports
+import { heroBannerHeight } from "../util/utils.js";
+import { getElement } from "../util/element.js";
+import fetchProducts from "../util/fetchProducts.js";
+import { store, setupStore } from "../util/store.js";
+import display from "../util/displayProducts.js";
+
+document.addEventListener("DOMContentLoaded", async function () {
+  heroBannerHeight();
+  const featuredContainer = getElement(".featured-container");
+  const allProdBtn = getElement(".all-prod-btn");
+  try {
+    featuredContainer.previousElementSibling.innerHTML = `<div class="loading"></div>`;
+    const allProducts = await fetchProducts();
+    if (allProducts) {
+      featuredContainer.previousElementSibling.innerHTML = ``;
+      // add products to local storage.
+      await setupStore(allProducts);
+      // console.log(store);
+      const featured = store.filter((item) => item.featured === true);
+      // console.log(featured);
+      display(featured, featuredContainer);
+      allProdBtn.classList.add("show-btn");
+    }
+  } catch (error) {
+    featuredContainer.previousElementSibling.innerHTML = `<p class="alert alert-danger">${error.message}</p>`;
+  }
 });

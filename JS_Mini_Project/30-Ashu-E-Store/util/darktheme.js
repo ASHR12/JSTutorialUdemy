@@ -1,7 +1,6 @@
 import { getElement } from "./element.js";
-
+import { getStorageItem, setStorageItem } from "./utils.js";
 const checkbox = getElement("#checkbox");
-
 const darkThemeEventListener = () => {
   checkbox.addEventListener("change", () => {
     var checkedStatus = document.getElementById("checkbox").checked;
@@ -10,7 +9,7 @@ const darkThemeEventListener = () => {
         themeName: "dark-theme",
       };
       document.body.classList.add("dark-theme");
-      localStorage.setItem("themeValue", JSON.stringify(themeValue));
+      setStorageItem("themeValue", themeValue);
       changeLogo(true);
     } else {
       document.body.classList.remove("dark-theme");
@@ -21,7 +20,6 @@ const darkThemeEventListener = () => {
 };
 const setThemeCurrentStatus = function () {
   const value = JSON.parse(localStorage.getItem("themeValue"));
-
   if (value) {
     document.getElementById("checkbox").checked = true;
     document.body.classList.add("dark-theme");
@@ -44,4 +42,5 @@ const changeLogo = (darkStatus) => {
   }
 };
 
-export { darkThemeEventListener, setThemeCurrentStatus };
+setThemeCurrentStatus();
+darkThemeEventListener();

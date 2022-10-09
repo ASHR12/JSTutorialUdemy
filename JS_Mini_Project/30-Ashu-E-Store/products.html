@@ -136,18 +136,18 @@
     </section>
     <!-- Page hero end -->
     <!-- Products section start -->
-    <main class="section-center main-container">
+    <main class="section-center products-main-container">
       <aside class="filter-section">
         <form class="input-form">
           <input type="text" class="search-input" placeholder="search..." />
         </form>
         <p class="buttonHeading">filter by company name</p>
         <article class="companies">
-          <button class="company-btn active" data-id="all">all</button>
+          <!-- <button class="company-btn active" data-id="all">all</button>
           <button class="company-btn" data-id="ikea">ikea</button>
           <button class="company-btn" data-id="marcos">marcos</button>
           <button class="company-btn" data-id="caressa">caressa</button>
-          <button class="company-btn" data-id="liddy">liddy</button>
+          <button class="company-btn" data-id="liddy">liddy</button> -->
         </article>
         <p class="rangeHeading">price</p>
         <form class="price-form">
@@ -161,9 +161,11 @@
         </form>
         <p class="price-value">Value : $80</p>
       </aside>
-      <!-- <main class="product-container"></main> -->
+      <div class="network-info">
+        <div class="loading"></div>
+      </div>
       <section class="products-container">
-        <article class="product">
+        <!-- <article class="product">
           <div class="product-container">
             <figure>
               <img
@@ -188,296 +190,10 @@
             <p class="product-name">high-back bench</p>
             <p class="product-price">$9.99</p>
           </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
-        <article class="product">
-          <div class="product-container">
-            <figure>
-              <img
-                src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
-                class="product-img img"
-                alt="high-back bench"
-              />
-            </figure>
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fa-solid fa-magnifying-glass fa-fw"></i>
-              </a>
-              <button
-                class="product-cart-btn product-icon"
-                data-id="rec43w3ipXvP28vog"
-              >
-                <i class="fa-solid fa-cart-shopping fa-fw"></i>
-              </button>
-            </div>
-          </div>
-          <figcaption>
-            <p class="product-name">high-back bench</p>
-            <p class="product-price">$9.99</p>
-          </figcaption>
-        </article>
+        </article> -->
       </section>
     </main>
     <!-- Products section end -->
   </body>
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/products.js"></script>
 </html>

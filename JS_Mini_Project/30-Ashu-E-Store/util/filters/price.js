@@ -21,6 +21,8 @@ const setupPrice = (store) => {
     pageLoader.style.display = "grid";
     // console.log("from price", companiesBtnList);
     removeBtnActiveState(companiesBtnList);
+    const searchInput = getElement(".search-input");
+    searchInput.value = "";
     const allBtn = document.querySelector(".company-btn");
     allBtn.classList.add("active");
     const value = parseInt(priceInput.value);

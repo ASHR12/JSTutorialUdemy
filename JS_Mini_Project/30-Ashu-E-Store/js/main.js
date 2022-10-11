@@ -13,21 +13,24 @@ import display from "../util/displayProducts.js";
 document.addEventListener("DOMContentLoaded", async function () {
   heroBannerHeight();
   const featuredContainer = getElement(".featured-container");
+  const pageLoader = getElement(".page-loader");
+  const responseMsgDisplay = getElement(".response-msg-display");
   const allProdBtn = getElement(".all-prod-btn");
   try {
-    featuredContainer.previousElementSibling.innerHTML = `<div class="loading"></div>`;
     const allProducts = await fetchProducts();
     if (allProducts) {
-      featuredContainer.previousElementSibling.innerHTML = ``;
+      pageLoader.style.display = "none";
       // add products to local storage.
       await setupStore(allProducts);
       // console.log(store);
       const featured = store.filter((item) => item.featured === true);
       // console.log(featured);
-      display(featured, featuredContainer);
+      display(featured, featuredContainer, false);
       allProdBtn.classList.add("show-btn");
     }
   } catch (error) {
-    featuredContainer.previousElementSibling.innerHTML = `<p class="alert alert-danger">${error.message}</p>`;
+    pageLoader.style.display = "none";
+    console.log(error);
+    responseMsgDisplay.innerHTML = `<p class="error-result alert alert-danger">${error.message}</p>`;
   }
 });

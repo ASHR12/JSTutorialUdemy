@@ -1,5 +1,6 @@
 import { getElement, getElements } from "../element.js";
 import display from "../displayProducts.js";
+import { removeBtnActiveState, setRangeValueToMax } from "../utils.js";
 const companiesButtonDOM = getElement(".companies");
 const productsContainer = getElement(".products-container");
 const searchInput = getElement(".search-input");
@@ -27,13 +28,13 @@ const setupCompanies = (store) => {
     .join("");
   companiesButtonDOM.innerHTML = buttonListHTML;
   const companiesBtnList = [...getElements(".company-btn")];
+  // console.log("from companies", companiesBtnList);
   companiesBtnList.forEach((btn) => {
     btn.addEventListener("click", function () {
-      companiesBtnList.forEach((item) => {
-        item.classList.remove("active");
-      });
+      removeBtnActiveState(companiesBtnList);
       this.classList.add("active");
       searchInput.value = "";
+      setRangeValueToMax();
       if (this.dataset.id === "all") {
         newStore = [...store];
       } else {
@@ -44,7 +45,7 @@ const setupCompanies = (store) => {
         });
       }
       //   console.log(newStore);
-      display(newStore, productsContainer);
+      display(newStore, productsContainer, true);
     });
   });
 };

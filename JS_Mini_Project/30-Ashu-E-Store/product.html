@@ -89,7 +89,7 @@
         </header>
         <!-- cart items start -->
         <div class="cart-items">
-          <article class="cart-item" data-id="rec43w3ipXvP28vog">
+          <!-- <article class="cart-item" data-id="rec43w3ipXvP28vog">
             <img
               src="https://dl.airtable.com/.attachmentThumbnails/d86e13eec1b200e2b21282b99a9382be/6d92321b"
               class="cart-item-img"
@@ -118,7 +118,7 @@
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
             </div>
-          </article>
+          </article> -->
         </div>
         <!-- cart items end-->
         <footer>
@@ -135,8 +135,10 @@
       </div>
     </section>
     <!-- Page hero end -->
-    <main class="products-detail-page">
-      <section class="product-details-container section-center">
+    <main class="products-detail-page page-current-stage">
+      <section
+        class="product-details-container section-center response-msg-display"
+      >
         <article class="product">
           <figure>
             <img
@@ -161,10 +163,13 @@
               venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki
               trust fund hashtag kinfolk microdosing gochujang live-edge
             </p>
-            <button class="btn add-Cart">Add to Cart</button>
+            <button class="btn add-Cart" data-id="xxxx">Add to Cart</button>
           </figcaption>
         </article>
       </section>
+      <div class="page-loader">
+        <div class="loading"></div>
+      </div>
     </main>
   </body>
   <script type="module" src="./js/product.js"></script>

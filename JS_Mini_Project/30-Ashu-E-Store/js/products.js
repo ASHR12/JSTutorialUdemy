@@ -9,19 +9,24 @@ import setupCompanies from "../util/filters/companies.js";
 import setupPrice from "../util/filters/price.js";
 
 // specific imports
-import { store } from "../util/store.js";
+import { store, setupStore } from "../util/store.js";
 import display from "../util/displayProducts.js";
 import { getElement } from "../util/element.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+import fetchProducts from "../util/fetchProducts.js";
+
+document.addEventListener("DOMContentLoaded", async () => {
+  // console.log(store);
   const productsContainer = getElement(".products-container");
-  if (store.length > 0) {
-    display(store, productsContainer);
-    setupCompanies(store);
-    setupSearch(store, productsContainer);
-    productsContainer.previousElementSibling.style.display = "none";
-    setupPrice(store);
-  } else {
-    window.location.replace("index.html");
+  const pageLoader = getElement(".page-loader");
+  if (store.length < 1) {
+    const products = await fetchProducts();
+    setupStore(products);
   }
+
+  display(store, productsContainer, false);
+  setupCompanies(store);
+  setupSearch(store, productsContainer);
+  setupPrice(store);
+  pageLoader.style.display = "none";
 });

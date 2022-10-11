@@ -1,6 +1,6 @@
 import { formatPrice } from "./utils.js";
 import { addToCart } from "./cart/setupCart.js";
-const display = (products, element) => {
+const display = (products, element, filterCall) => {
   // console.log(products, element);
   element.innerHTML = products
     .map((product) => {
@@ -34,18 +34,19 @@ const display = (products, element) => {
     `;
     })
     .join("");
-
-  element.addEventListener("click", function (e) {
-    const parent = e.target.parentElement;
-    // console.log(parent);
-    if (parent.classList.contains("product-cart-btn")) {
-      addToCart(parent.dataset.id);
-    }
-    if (parent.classList.contains("product-icons")) {
-      const lastChildElement = parent.lastElementChild;
-      addToCart(lastChildElement.dataset.id);
-    }
-  });
+  if (!filterCall) {
+    element.addEventListener("click", function (e) {
+      const parent = e.target.parentElement;
+      // console.log(parent);
+      if (parent.classList.contains("product-cart-btn")) {
+        addToCart(parent.dataset.id);
+      }
+      if (parent.classList.contains("product-icons")) {
+        const lastChildElement = parent.lastElementChild;
+        addToCart(lastChildElement.dataset.id);
+      }
+    });
+  }
 };
 
 export default display;

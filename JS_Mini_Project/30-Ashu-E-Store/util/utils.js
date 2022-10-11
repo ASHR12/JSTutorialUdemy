@@ -30,6 +30,16 @@ const setStorageItem = (name, item) => {
   localStorage.setItem(name, JSON.stringify(item));
 };
 
+const removeBtnActiveState = (companiesBtnList) => {
+  companiesBtnList.forEach((item) => {
+    item.classList.remove("active");
+  });
+};
+const setRangeValueToMax = () => {
+  const priceInput = getElement(".price-filter");
+  priceInput.value = priceInput.getAttribute("max");
+};
+
 export {
   allProductsUrl,
   singleProductUrl,
@@ -37,4 +47,6 @@ export {
   formatPrice,
   getStorageItem,
   setStorageItem,
+  removeBtnActiveState,
+  setRangeValueToMax,
 };

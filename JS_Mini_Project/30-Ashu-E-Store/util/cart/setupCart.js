@@ -13,7 +13,7 @@ const cartTotalDom = getElement(".cart-total");
 let cart = getStorageItem("cart");
 
 export const addToCart = (id) => {
-  console.log(id);
+  // console.log(id);
   let item = cart.find((cartItem) => cartItem.id === id);
   // console.log(item);
   if (!item) {
@@ -22,7 +22,7 @@ export const addToCart = (id) => {
     // add item to the cart
     product = { ...product, amount: 1 };
     cart = [...cart, product];
-    console.log(cart);
+    // console.log(cart);
     // add item to the dom
     addToCartDOM(product);
   } else {
@@ -35,7 +35,7 @@ export const addToCart = (id) => {
         return item;
       }
     });
-    console.log(newAmountElement);
+    // console.log(newAmountElement);
     newAmountElement.textContent = updatedAmount;
   }
   // set item to local storage.
@@ -44,7 +44,6 @@ export const addToCart = (id) => {
   displayCartItemCount();
   // update total value
   displayCartTotal();
-
   //
   openCart();
 };

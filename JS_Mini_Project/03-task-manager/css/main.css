@@ -314,6 +314,10 @@ ul {
     margin: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+	border: 1px solid var(--primary-500);
+  }
+  .task-manager-form .form-row .btn:hover {
+	border: 1px solid var(--primary-700);
   }
   .task-manager-form .form-row #name {
     border-top-right-radius: 0;
@@ -399,11 +403,11 @@ ul {
     max-width: var(--fixed-width);
   }
 }
-.form-row {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 2rem;
+.task-manager .form-row {
   align-items: center;
+}
+textarea:focus, input:focus{
+    outline: none;
 }
 .form-row p,
 .form-row .form-label {
@@ -435,4 +439,14 @@ ul {
 .back-btn:hover {
   color: var(--grey-900);
   background: var(--grey-300);
+}
+
+.form-row.completed {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+	align-items: center;
+}
+input.form-input.completed-checkbox {
+    width: 20px;
 }
